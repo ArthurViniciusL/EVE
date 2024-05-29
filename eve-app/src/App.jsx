@@ -1,8 +1,14 @@
-import { Home } from "./views/Home";
+
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./routes/routes";
+
 
 export const App = () => {
+
     return (
-        <Home></Home>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
     );
 
 }

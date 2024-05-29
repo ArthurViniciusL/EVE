@@ -1,10 +1,13 @@
 import './style-button.css';
 
-export const Button = ({ID, LABEL, ROUTER }) => {
+export const Button = ({ ID, LABEL, ROUTER, EXTERNAL_LINK }) => {
     return (
-        <button className="generic-button"
-        key={ID}
-        router={ROUTER}>{LABEL}</button>
+        <a href={EXTERNAL_LINK}>
+            <button className="generic-button"
+                key={ID}
+            > {LABEL}
+            </button>
+        </a>
     )
 }
 
