@@ -27,16 +27,7 @@ do
 	rm $reactDefaults
 done
 
-echo "Criando styles/styles.css"
 cd styles
-touch style.css
-cd ../
-
-echo "Criando views/home/index.jsx"
-cd views
-mkdir Home
-cd Home
-touch index.jsx
 touch style.css
 
 cd ../../
