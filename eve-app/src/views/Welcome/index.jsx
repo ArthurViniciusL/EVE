@@ -4,11 +4,17 @@ import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as EveLogo } from "../../assets/imgs/evelogo.svg";
-import { ReactComponent as Clouds } from "../../assets/imgs/clouds.svg";
+import clouds from '../../assets/imgs/clouds.png';
+
 
 export class Welcome extends Component {
 
     render() {
+
+        const msgOnClick = () => {
+            window.alert('Ops! Ainda não temos dinheiro para essa parte...');
+        };
+
         return <>
             <main >
                 <div className='page-content'>
@@ -22,12 +28,16 @@ export class Welcome extends Component {
                     </div>
 
                     <div className='buttons-box'>
-                        <Button LABEL={"Criar conta"} STYLE={"border"}></Button>
+                        <Button ON_Click={msgOnClick} LABEL={"Criar conta"} STYLE={"border"}></Button>
 
                         <Link to="home">
                             <Button LABEL={"Entrar"} STYLE={"fill"}></Button>
                         </Link>
                     </div>
+
+                    <footer>
+                        <img className='clouds' src={clouds} alt="" srcset="" />
+                    </footer>
                 </div>
             </main>
 
