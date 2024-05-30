@@ -3,7 +3,8 @@ import { Component } from "react";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as EveLogo } from "../../assets/imgs/evelogo.svg"
+import { ReactComponent as EveLogo } from "../../assets/imgs/evelogo.svg";
+import { ReactComponent as Clouds } from "../../assets/imgs/clouds.svg"
 
 export class Welcome extends Component {
     render() {
@@ -12,7 +13,12 @@ export class Welcome extends Component {
                 <div className='page-content'>
                     <EveLogo className="EveLogo"></EveLogo>
 
-                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis doloribus ipsa, veniam sint, maxime quis, nostrum aperiam quo accusantium eos at quas deserunt rerum ipsum porro. Amet assumenda corporis eius! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci quasi ad fuga voluptas nam nostrum veritatis ea? Accusantium dicta rerum harum provident sit! Tenetur praesentium eveniet quaerat nam totam harum!</p>
+                    <div className='text-box'>
+                        <p>  Bem-vindo ao EVE, <strong>seu novo gerenciador de arquivos na nuvem!</strong> </p>
+
+                        <p>  Imagine um lugar onde todos os seus arquivos importantes estão sempre ao seu alcance, organizados de forma intuitiva e seguros contra qualquer imprevisto. Esse lugar existe, e nós o chamamos de EVE.</p>
+
+                    </div>
 
                     <div className='buttons-box'>
                         < Button FILL={"#fff"} BORDE={"solid var(--solidBlueEve)"} TEXT_COLOR={'var(--solidBlueEve)'} LABEL={"Criar conta"}></Button>
@@ -22,6 +28,7 @@ export class Welcome extends Component {
                         </Link>
                     </div>
                 </div>
+{/*                 <Clouds className="Clouds"></Clouds> */}
             </main>
         </>
     }
