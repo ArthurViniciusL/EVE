@@ -4,7 +4,7 @@ import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 
 import { ReactComponent as EveLogo } from "../../assets/imgs/evelogo.svg";
-import { ReactComponent as Clouds } from "../../assets/imgs/clouds.svg"
+import { ReactComponent as Clouds } from "../../assets/imgs/clouds.svg";
 
 export class Welcome extends Component {
 
@@ -17,7 +17,7 @@ export class Welcome extends Component {
                     <div className='text-box'>
                         <p>  Bem-vindo ao EVE, <strong>seu novo gerenciador de arquivos na nuvem!</strong> </p>
 
-                        <p>  Imagine um lugar onde todos os seus arquivos importantes estão sempre ao seu alcance, organizados de forma intuitiva e seguros contra qualquer imprevisto. Esse lugar existe, e nós o chamamos de EVE.</p>
+                        <p>  Imagine um lugar onde todos os seus arquivos importantes estão sempre ao seu alcance, organizados de forma intuitiva e seguros contra qualquer imprevisto. Esse lugar existe, e nós o chamamos de eve.</p>
 
                     </div>
 
