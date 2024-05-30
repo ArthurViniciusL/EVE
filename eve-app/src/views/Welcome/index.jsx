@@ -7,6 +7,7 @@ import { ReactComponent as EveLogo } from "../../assets/imgs/evelogo.svg";
 import { ReactComponent as Clouds } from "../../assets/imgs/clouds.svg"
 
 export class Welcome extends Component {
+
     render() {
         return <>
             <main >
@@ -21,15 +22,15 @@ export class Welcome extends Component {
                     </div>
 
                     <div className='buttons-box'>
-                        < Button FILL={"#fff"} BORDE={"solid var(--solidBlueEve)"} TEXT_COLOR={'var(--solidBlueEve)'} LABEL={"Criar conta"}></Button>
+                        <Button LABEL={"Criar conta"} STYLE={"border"}></Button>
 
                         <Link to="home">
-                            <Button FILL={"var(--solidBlueEve)"} TEXT_COLOR={"#fff"} LABEL={"Entrar "}></Button>
+                            <Button LABEL={"Entrar"} STYLE={"fill"}></Button>
                         </Link>
                     </div>
                 </div>
-{/*                 <Clouds className="Clouds"></Clouds> */}
             </main>
+
         </>
     }
 }

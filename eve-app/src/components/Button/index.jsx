@@ -1,11 +1,11 @@
+
 import './style-button.css';
 
-export const Button = ({ ID, LABEL, BORDE, FILL, TEXT_COLOR }) => {
+export const Button = ({ ID, STYLE ,LABEL }) => {
     return (
-
         <button className="generic-button"
             key={ID}
-            style={{ border: BORDE, backgroundColor: FILL, color: TEXT_COLOR }}
+            id={STYLE}
         > {LABEL}
         </button>
 

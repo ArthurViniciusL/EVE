@@ -3,10 +3,34 @@
 .generic-button {
     border: none;
     padding: 15px;
+    cursor: pointer;
+    background-color: var(--smoothBlueEve);
     border-radius: var(--btnBorderRadiusEve);
 }
 
 .generic-button:hover {
+    text-decoration: underline;
     font-weight: bold;
+}
+
+#fill {
+/*     background-color: var(--solidBlueEve); */
+}
+
+#fill:hover {
+    color: white;
     background-color: var(--solidBlueEve);
+}
+
+#border {
+
+    border: solid 2px var(--solidBlueEve);
+    background-color: #ffffff;
+}
+
+#border:hover {
+    color: white;
+    border: none;
+    background-color: var(--solidBlueEve);
+
 }
