@@ -1,13 +1,15 @@
 
 import { BrowserRouter } from "react-router-dom";
-import { Router } from "./routes/routes";
+import { AppRouter } from "./app-routing";
+
+import './styles/style.css';
 
 
 export const App = () => {
 
     return (
         <BrowserRouter>
-            <Router />
+            <AppRouter />
         </BrowserRouter>
     );
 

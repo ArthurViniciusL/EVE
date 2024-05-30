@@ -1,9 +1,9 @@
 import { useRoutes } from "react-router-dom";
-import { Welcome } from "../views/Welcome";
-import { Home } from "../views/Home";
+import { Welcome } from "./views/Welcome";
+import { Home } from "./views/Home";
 
 
-export const Router = () => {
+export const AppRouter = () => {
     let element = useRoutes([
 
         {

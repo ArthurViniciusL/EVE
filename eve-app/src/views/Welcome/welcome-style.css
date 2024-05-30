@@ -1,0 +1,40 @@
+@import url('../../styles/style.css');
+
+main {
+    min-width: 100vh;
+    height: 100vh;
+
+    overflow: hidden;
+}
+
+.page-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: solid red;
+}
+
+.EveLogo {
+    max-width: 80%;
+    margin: 50px;
+    
+}
+
+p {
+    margin: 50px;
+}
+
+.buttons-box {
+    margin: 50px;
+}
+
+Button {
+    font-size: 22px;
+    
+    width: 400px;
+    height: 70px;
+    margin: 30px;
+
+}

@@ -1,3 +1,29 @@
-body {
-    background-color: red;
+@charset "UTF-8";
+
+@font-face {
+    font-family: "OpenSans";
+    src: url('../assets/fonts/Open_Sans/OpenSans-VariableFont_wdth\,wght.ttf');
+}
+
+@font-face {
+    font-family: "Pacificio";
+    src: url('../assets/fonts/Pacifico/Pacifico-Regular.ttf');
+}
+
+:root {
+    --solidBlueEve: #174AE4;
+    --smoothBlueEve: #EEF0F6;
+    --solidRedEve: #F60000;
+    --soomthGreyEve: #F6F6F6;
+    --btnBorderRadiusEve: 100px;
+    --conersBorderRadiusEve: 40px;
+
+    --eveBasicFont: "OpenSans";
+    --fontTitle: "Pacificio";
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--eveBasicFont);
 }

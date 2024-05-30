@@ -1,13 +1,14 @@
 import './style-button.css';
 
-export const Button = ({ ID, LABEL, ROUTER, EXTERNAL_LINK }) => {
+export const Button = ({ ID, LABEL, BORDE, FILL, TEXT_COLOR }) => {
     return (
-        <a href={EXTERNAL_LINK}>
-            <button className="generic-button"
-                key={ID}
-            > {LABEL}
-            </button>
-        </a>
+
+        <button className="generic-button"
+            key={ID}
+            style={{ border: BORDE, backgroundColor: FILL, color: TEXT_COLOR }}
+        > {LABEL}
+        </button>
+
     )
 }
 
