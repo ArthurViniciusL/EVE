@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { getAllFolders } from "../../utils/API";
+import { FolderComponent } from "../Folder";
 
 const Feed = () => {
 
     const [folders, f] = useState([]);
-    
+
     useEffect(() => {
-        getAllFolders(1,f);
+        getAllFolders(1, f);
     }, []);
 
     return (
         <>
+            <FolderComponent NAME={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, nihil sequi asperiores ducimus enim delectus totam libero. Consequatur reiciendis exercitationem, repellendus laboriosam sunt eaque, similique molestias architecto accusantium temporibus ut."}></FolderComponent>
             <h2>Listas:</h2>
             <div>
                 {folders.map((folder, index) => (
@@ -19,6 +21,7 @@ const Feed = () => {
                         <li key={index}>{folder.name}</li>
                     </ul>
                 ))}
+
             </div>
         </>
     );

@@ -36,7 +36,7 @@ export class Welcome extends Component {
                     </div>
 
                     <footer>
-                        <img className='clouds' src={clouds} alt="" srcset="" />
+                        <img className='clouds' src={clouds} alt="imagem do footer" />
                     </footer>
                 </div>
             </main>
