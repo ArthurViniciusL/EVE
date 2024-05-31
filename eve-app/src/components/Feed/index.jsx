@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
-import { getFolders } from "../../utils/API";
+import { getAllFolders } from "../../utils/API";
 
 const Feed = () => {
-    const [folders, setFolders] = useState([]);
 
+    const [folders, f] = useState([]);
+    
     useEffect(() => {
-        getFolders(setFolders);
+        getAllFolders(1,f);
     }, []);
 
     return (
-        <div>
-            <h1>Listas:</h1>
-            <ul>
+        <>
+            <h2>Listas:</h2>
+            <div>
                 {folders.map((folder, index) => (
-                    <li key={index}>{folder.name}</li>
+                    <ul>
+                        <li>📁</li>
+                        <li key={index}>{folder.name}</li>
+                    </ul>
                 ))}
-            </ul>
-        </div>
+            </div>
+        </>
     );
 };
 

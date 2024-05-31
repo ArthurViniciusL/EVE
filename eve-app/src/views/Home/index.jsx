@@ -3,14 +3,13 @@ import Feed from "../../components/Feed";
 
 export class Home extends Component {
     
-
     render() {
         
         return (
             <>
-                <h1>
+                <h2>
                     Folders:
-                </h1>
+                </h2>
 
                 <Feed></Feed>
             </>
