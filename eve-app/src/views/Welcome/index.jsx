@@ -16,7 +16,7 @@ export class Welcome extends Component {
 
         const styleJs = {
             "ButtonStyle": {
-                "width": "400px", "height": "70px", "font-size": "22px", "margin": "30px"
+                "width": "400px", "height": "70px", "fontSize": "22px", "margin": "30px"
             }
         }
 

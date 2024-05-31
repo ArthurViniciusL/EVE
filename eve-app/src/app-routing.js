@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import { Welcome } from "./views/Welcome";
 import { Home } from "./views/Home";
+import { SubFolder } from "./views/Subfolders";
 
 
 export const AppRouter = () => {
@@ -19,9 +20,13 @@ export const AppRouter = () => {
         {
             element: <Home />,
             children: [
-                { path: "home", element: <Home /> }
+                {
+                    path: "home", element: <Home />,
+                }, {
+                    path: "subfolder", element: <SubFolder/>
+                }
             ]
-        },
+        }
     ]);
 
     return element;

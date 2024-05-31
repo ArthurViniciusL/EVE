@@ -1,7 +1,7 @@
 import './header-style.css';
 import { EveLogo } from "../../components/EveLogo";
 import { Button } from "../../components/Button";
-import { BootstrapIcon } from '../../utils/BootstrapIcons';
+import { BootstrapIcon } from '../../utils/Main';
 import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
 
@@ -11,8 +11,8 @@ export const Header = () => {
         "ButtonStyle": {
             "width": "60px",
             "height": "fit-content",
-            "font-size": "medium",
-            "border-radius": "15px"
+            "fontSize": "medium",
+            "borderRadius": "15px"
         }
     };
     return (

@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
-import { getAllFolders } from "../../utils/ApiService.js";
+
 import { FolderComponent } from "../../components/Folder/index.jsx";
-/* import { FileComponent } from "../Files"; */
+
+import { getFolders } from "../../utils/ApiService.js"
 
 import './directory-style.css';
 
 const Directory = () => {
 
-    const [folders, f] = useState([]);
-
-    useEffect(() => {
-        getAllFolders(1, f);
-    }, []);
+    getFolders("id_dinamico");
 
     return (
-        <>            
-            <div className="dir-content">
-                {folders.map((folder, index) => (
-                        <FolderComponent ID={index} NAME={folder.name}></FolderComponent>
-                ))}
-
-            </div>
+        <>
+            <div className='dir-content'>
+                <FolderComponent ID={1} NAME={"Estati_nome_da_pasta_aqui"}></FolderComponent>
+            </div >
         </>
     );
 };
