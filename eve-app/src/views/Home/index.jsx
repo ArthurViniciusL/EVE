@@ -1,5 +1,5 @@
 import { Component } from "react";
-import DirectoryView from "../../components/DirectoryView";
+import Directory from "../../views/Directory";
 
 import './home-style.css'
 import { Header } from "../../components/Header";
@@ -14,7 +14,7 @@ export class Home extends Component {
                 <section>
                     <Header></Header>
                     <div className="directory-content">
-                        <DirectoryView></DirectoryView>
+                        <Directory></Directory>
                     </div>
                 </section>
             </main>

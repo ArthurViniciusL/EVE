@@ -27,7 +27,7 @@ export const Header = () => {
 
                     <DirectoryBar></DirectoryBar>
 
-                    <div>
+                    <div className='Header-box-button'>
                         <Button LABEL={
                             <BootstrapIcon
                                 iconName="FolderFill"
