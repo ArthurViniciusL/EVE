@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Feed from "../../components/Feed";
+import Directory from "../../components/Directory";
 
 export class Home extends Component {
     
@@ -11,7 +11,7 @@ export class Home extends Component {
                     Folders:
                 </h2>
 
-                <Feed></Feed>
+                <Directory></Directory>
             </>
         )
     }

@@ -9,6 +9,7 @@
     padding: 10px;
     margin: 20px;
     text-overflow: clip;
+    cursor: pointer;
     border-radius: var(--conersBorderRadiusEve);
 
 }
