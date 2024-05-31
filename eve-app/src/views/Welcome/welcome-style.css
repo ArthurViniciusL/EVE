@@ -1,6 +1,6 @@
 @import url('../../styles/style.css');
 
-main {
+.box-welcome-content {
     height: 100vh;
 
     overflow: hidden;
@@ -13,11 +13,6 @@ main {
     flex-direction: column;
     justify-content: center;
 
-}
-
-.EveLogo {
-    max-width: 70%;
-    margin: 50px;
 }
 
 .text-box {

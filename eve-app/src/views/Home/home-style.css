@@ -1,0 +1,31 @@
+@import url('../../styles/style.css');
+
+.box-home-content {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--smoothBlueEve);
+}
+
+section {
+    width: 98%;
+    height: 98%;
+    overflow-y: scroll;
+    border-radius: var(--conersBorderRadiusEve);
+    background-color: white;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.directory-content {
+
+    overflow: scroll;
+    background-color: white;
+}

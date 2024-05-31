@@ -1,5 +1,17 @@
 .dir-content {
+    /*     display: flex;
+    flex-wrap: wrap; */
+
     display: flex;
-    flex-wrap: wrap;
-    border: red solid;
+    justify-content: center;
+    
+    display: grid;
+    grid-template-columns: repeat(9, 10vw);
+
+}
+
+@media (max-width: 600px) {
+    .dir-content {
+        grid-template-columns: repeat(2, 200px);
+    }
 }

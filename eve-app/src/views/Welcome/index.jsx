@@ -3,8 +3,8 @@ import { Component } from "react";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as EveLogo } from "../../assets/imgs/evelogo.svg";
 import clouds from '../../assets/imgs/clouds.png';
+import { EveLogo } from '../../components/EveLogo';
 
 
 export class Welcome extends Component {
@@ -16,9 +16,9 @@ export class Welcome extends Component {
         };
 
         return <>
-            <main >
+            <main className='box-welcome-content'>
                 <div className='page-content'>
-                    <EveLogo className="EveLogo"></EveLogo>
+                    <EveLogo WIDTH={"50%"} HEIGHT={""} ></EveLogo>
 
                     <div className='text-box'>
                         <p>  Bem-vindo ao EVE, <strong>seu novo gerenciador de arquivos na nuvem!</strong> </p>
