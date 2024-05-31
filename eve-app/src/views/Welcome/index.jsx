@@ -28,10 +28,10 @@ export class Welcome extends Component {
                     </div>
 
                     <div className='buttons-box'>
-                        <Button ON_Click={msgOnClick} LABEL={"Criar conta"} STYLE={"border"}></Button>
+                        <Button LABEL={"Criar conta"} ON_Click={msgOnClick}  STYLE_EVE={"border"} CSS={{"width":"400px", "height":"70px"}}></Button>
 
                         <Link to="home">
-                            <Button LABEL={"Entrar"} STYLE={"fill"}></Button>
+                            <Button LABEL={"Entrar"} STYLE_EVE={"fill"}  CSS={{"width":"400px", "height":"70px"}}></Button>
                         </Link>
                     </div>
 

@@ -2,7 +2,9 @@
 
 .generic-button {
     border: none;
-    padding: 15px;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
     cursor: pointer;
     background-color: var(--smoothBlueEve);
     border-radius: var(--btnBorderRadiusEve);
