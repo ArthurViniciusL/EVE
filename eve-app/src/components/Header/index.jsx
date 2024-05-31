@@ -1,25 +1,64 @@
 import './header-style.css';
 import { EveLogo } from "../../components/EveLogo";
 import { Button } from "../../components/Button";
-
+import { BootstrapIcon } from '../../utils/BootstrapIcons';
+import { Link } from 'react-router-dom';
+import { DirectoryBar } from '../DirectoryBar';
 
 export const Header = () => {
+
+    const styleJs = {
+        "ButtonStyle": {
+            "width": "60px",
+            "height": "fit-content",
+            "font-size": "medium",
+            "border-radius": "15px"
+        }
+    };
     return (
         <>
             <header className="box-header" >
                 <div className="header-content">
                     <div className="box-logo">
-                        <EveLogo WIDTH={"100%"} HEIGTH={"100%"} ></EveLogo>
+                        <Link to={"home"}>
+                            <EveLogo WIDTH={"100%"} HEIGTH={"100%"} ></EveLogo>
+                        </Link>
                     </div>
-                    <h1>{"{caminho_do_diretorio}"}</h1>
-                    <div>
-                        <Button LABEL={"x"} WIDTH={"fit-content"} HEIGHT={"fit-content"} ></Button>
-                        <Button LABEL={"+"}  WIDTH={"fit-content"} HEIGHT={"fit-content"} ></Button>
-                        <Button LABEL={"-"}  WIDTH={"fit-content"} HEIGHT={""} ></Button>
 
+                    <DirectoryBar></DirectoryBar>
+
+                    <div>
+                        <Button LABEL={
+                            <BootstrapIcon
+                                iconName="FolderFill"
+                                color="var(--solidBlueEve)"
+                                size={20}
+                                className="align-top"
+                            />
+                        } CSS={styleJs.ButtonStyle}></Button>
+
+                        <Button LABEL={
+                            <BootstrapIcon
+                                iconName="FileEarmarkArrowDownFill"
+                                color="var(--solidBlueEve)"
+                                size={20}
+                                className="align-top"
+                            />
+                        } CSS={styleJs.ButtonStyle}></Button>
+
+                        <Link to={"/"}>
+                            <Button LABEL={
+                                <BootstrapIcon
+                                    iconName="BoxArrowRight"
+                                    color="var(--solidRedEve)"
+                                    size={20}
+                                    className="align-top"
+                                />
+                            } CSS={styleJs.ButtonStyle}></Button>
+                        </Link>
                     </div>
                 </div>
-            </header>
+            </header >
         </>
     )
 }

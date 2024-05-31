@@ -6,14 +6,19 @@ import { Link } from "react-router-dom";
 import clouds from '../../assets/imgs/clouds.png';
 import { EveLogo } from '../../components/EveLogo';
 
-
 export class Welcome extends Component {
 
     render() {
 
         const msgOnClick = () => {
-            window.alert('Ops! Ainda não temos dinheiro para essa parte...');
+           window.alert('Ops! Ainda não temos dinheiro para essa parte...');
         };
+
+        const styleJs = {
+            "ButtonStyle": {
+                "width": "400px", "height": "70px", "font-size": "22px", "margin": "30px"
+            }
+        }
 
         return <>
             <main className='box-welcome-content'>
@@ -28,10 +33,10 @@ export class Welcome extends Component {
                     </div>
 
                     <div className='buttons-box'>
-                        <Button LABEL={"Criar conta"} ON_Click={msgOnClick}  STYLE_EVE={"border"} CSS={{"width":"400px", "height":"70px"}}></Button>
+                        <Button LABEL={"Criar conta"} ON_Click={msgOnClick} STYLE_EVE={"border"} CSS={styleJs.ButtonStyle}></Button>
 
                         <Link to="home">
-                            <Button LABEL={"Entrar"} STYLE_EVE={"fill"}  CSS={{"width":"400px", "height":"70px"}}></Button>
+                            <Button LABEL={"Entrar"} STYLE_EVE={"fill"} CSS={styleJs.ButtonStyle}></Button>
                         </Link>
                     </div>
 

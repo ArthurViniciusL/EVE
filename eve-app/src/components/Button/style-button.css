@@ -3,20 +3,24 @@
 .generic-button {
     border: none;
     padding: 10px;
+    font-size: 22px;
+    margin: 10px;
     justify-content: center;
     text-align: center;
     cursor: pointer;
-    background-color: var(--smoothBlueEve);
+    background-color: transparent;
     border-radius: var(--btnBorderRadiusEve);
 }
 
 .generic-button:hover {
     text-decoration: underline;
     font-weight: bold;
+    background-color: var(--smoothBlueEve);
 }
 
 #fill {
-/*     background-color: var(--solidBlueEve); */
+    background-color:
+    var(--smoothBlueEve);
 }
 
 #fill:hover {
@@ -34,5 +38,4 @@
     color: white;
     border: none;
     background-color: var(--solidBlueEve);
-
 }

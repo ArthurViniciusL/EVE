@@ -33,11 +33,6 @@ p {
     flex-direction: row;
 }
 
-Button {
-    font-size: 22px;
-    margin: 30px;
-}
-
 footer {
     position: fixed;
     bottom: 0;

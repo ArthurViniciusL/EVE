@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAllFolders } from "../../utils/ApiService.js";
-import { FolderComponent } from "../Folder";
+import { FolderComponent } from "../Folder/index.jsx";
 /* import { FileComponent } from "../Files"; */
 
 import './directory-style.css';
 
-const Directory = () => {
+const DirectoryView = () => {
 
     const [folders, f] = useState([]);
 
@@ -25,4 +25,4 @@ const Directory = () => {
     );
 };
 
-export default Directory;
+export default DirectoryView;
