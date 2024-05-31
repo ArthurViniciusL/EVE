@@ -1,6 +1,5 @@
 .dir-content {
     display: flex;
-    align-items: baseline;
-    flex-direction: row;
+    flex-wrap: wrap;
     border: red solid;
 }
