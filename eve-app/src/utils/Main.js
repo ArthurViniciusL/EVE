@@ -6,10 +6,17 @@ export const BootstrapIcon = ({ iconName, ...props }) => {
 }
 
 export function sliceName(word) {
+    
+    let healthyWord = word;
+    
+    if (word.length > 15) {
+        const sliceWord = word.slice(0,15);
+        healthyWord = `${sliceWord}...`;
 
-    const sliceWord = word.slice(0,15);
+    }
 
-    const healthyWord = `${sliceWord}...`;
+
+
 
     return healthyWord;   
 
