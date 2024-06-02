@@ -9,7 +9,6 @@ export async function getFolders(...PATH_FOLDER) {
     // const defaultPath = URL_JUST_GET
 
     try {
-        console.log(PATH_FOLDER);
         const response = await fetch(defaultPath);
         const data = await response.json();
         console.log("Path Folder: " + data);

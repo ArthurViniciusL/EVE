@@ -25,7 +25,7 @@ export const Header = ({PATH_DIR_BAR}) => {
                 <div className="header-content">
 
                     <div className='box-logo'>
-                        <EveLogo WIDTH={'100%'} CURSOR={'pointer'}></EveLogo>
+                        <EveLogo WIDTH={'100%'} HEIGHT={'fit-content'} CURSOR={'pointer'}></EveLogo>
                     </div>
 
                     <DirectoryBar PATH={PATH_DIR_BAR}></DirectoryBar>

@@ -1,12 +1,21 @@
+
 .dir-content {
-    
-    /* overflow: hidden; */
     display: grid;
-    /* gap: 5px; */
     justify-content: center;
     grid-template-columns: repeat(9, 10vw);
- 
+    overflow: scroll;
 }
+
+.void-dir {
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* color: var(--smoothBlueEve); */
+   /*  border: red solid; */
+}
+
 
 @media (max-width: 1000px)  {
     .dir-content {

@@ -42,7 +42,7 @@ export default class Directory extends Component {
         const { folders, dirName } = this.state;
         return (
             <>
-                <Header PATH_DIR_BAR={dirName} onClick={console.log('Clicado!')}></Header>
+                <Header PATH_DIR_BAR={dirName}></Header>
 
                 <div className='dir-content'>
                     {
@@ -54,13 +54,12 @@ export default class Directory extends Component {
                     }
                     {
                         folders.length === 0 && (
-                            <div>
+                            <div className="void-dir">
                                 <p>Diretório vazio!</p>
                             </div>
                         )
                     }
                 </div >
-
             </>
         );
     }
