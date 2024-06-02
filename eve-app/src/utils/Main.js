@@ -5,11 +5,11 @@ export const BootstrapIcon = ({ iconName, ...props }) => {
     return <BootstrapIcon {...props} />;
 }
 
-export function sliceName(word) {
+export function sliceName(word, wordLength) {
     
     let healthyWord = word;
     
-    if (word.length > 15) {
+    if (word.length > wordLength) {
         const sliceWord = word.slice(0,15);
         healthyWord = `${sliceWord}...`;
 

@@ -16,6 +16,7 @@ export class Home extends Component {
                     <div className="directory-content">
                         <Directory></Directory>
                     </div>
+                    <div className="pseudo-footer"></div>
                 </section>
             </main>
         )

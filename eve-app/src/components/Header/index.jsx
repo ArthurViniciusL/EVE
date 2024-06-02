@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
 
 export const Header = () => {
-
     const styleJs = {
         "ButtonStyle": {
             "width": "60px",
@@ -19,10 +18,9 @@ export const Header = () => {
         <>
             <header className="box-header" >
                 <div className="header-content">
-                    <div className="box-logo">
-                        <Link to={"home"}>
-                            <EveLogo WIDTH={"100%"} HEIGTH={"100%"} ></EveLogo>
-                        </Link>
+
+                    <div className='box-logo'>
+                        <EveLogo WIDTH={'100%'} CURSOR={'pointer'}></EveLogo>
                     </div>
 
                     <DirectoryBar></DirectoryBar>
@@ -58,7 +56,9 @@ export const Header = () => {
                         </Link>
                     </div>
                 </div>
+
             </header >
         </>
     )
 }
+

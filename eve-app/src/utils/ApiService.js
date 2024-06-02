@@ -1,9 +1,12 @@
 const URL = 'http://localhost:8080/folders';
-// fetch(`${URL}/${FOLDER_ID}/subfolders`);
+//(`${URL}/${FOLDER_ID}/subfolders`);
+
+const URL_JUST_GET = 'https://arthurviniciusl.github.io/ApiTest/folders.json'
 
 export async function getFolders(...PATH_FOLDER) {
     
-    const defaultPath = `${URL}${PATH_FOLDER}` || URL
+    // const defaultPath = `${URL}${PATH_FOLDER}` || URL
+    const defaultPath = URL_JUST_GET
 
     try {
         console.log(PATH_FOLDER);

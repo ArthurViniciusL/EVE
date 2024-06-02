@@ -1,0 +1,21 @@
+@import url('../../styles/style.css');
+
+.directory-bar-content {
+    min-width: 30%;
+    min-height: 40px;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    justify-content: center;
+    font-size: small;
+    font-weight: unset;
+    border-radius: var(--btnBorderRadiusEve);
+    background-color: var(--smoothBlueEve);
+}
+
+@media (max-width: 600px) {
+    .directory-bar-content {
+        display: none;
+    }
+}

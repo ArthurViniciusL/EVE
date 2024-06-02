@@ -16,14 +16,17 @@ export class Welcome extends Component {
 
         const styleJs = {
             "ButtonStyle": {
-                "width": "400px", "height": "70px", "fontSize": "22px", "margin": "30px"
+                "width": "300px", "height": "70px", "fontSize": "22px", "margin": "30px"
             }
         }
 
         return <>
             <main className='box-welcome-content'>
                 <div className='page-content'>
-                    <EveLogo WIDTH={"50%"} HEIGHT={""} ></EveLogo>
+                    <div className='box-logo-welcome'>
+                    <EveLogo WIDTH={"100%"} HEIGHT={""} ></EveLogo>
+
+                    </div>
 
                     <div className='text-box'>
                         <p>  Bem-vindo ao EVE, <strong>seu novo gerenciador de arquivos na nuvem!</strong> </p>
