@@ -12,9 +12,9 @@ export class Home extends Component {
         return (
             <main className="box-home-content">
                 <section>
-                    <Header></Header>
+                   {/*  <Header></Header> */}
                     <div className="directory-content">
-                        <Directory></Directory>
+                        <Directory key={''}></Directory>
                     </div>
                     <div className="pseudo-footer"></div>
                 </section>

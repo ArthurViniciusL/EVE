@@ -5,14 +5,14 @@ const URL_JUST_GET = 'https://arthurviniciusl.github.io/ApiTest/folders.json'
 
 export async function getFolders(...PATH_FOLDER) {
     
-    // const defaultPath = `${URL}${PATH_FOLDER}` || URL
-    const defaultPath = URL_JUST_GET
+    const defaultPath = `${URL}${PATH_FOLDER}` || URL
+    // const defaultPath = URL_JUST_GET
 
     try {
         console.log(PATH_FOLDER);
         const response = await fetch(defaultPath);
         const data = await response.json();
-        console.log("loggetFolders: " + data);
+        console.log("Path Folder: " + data);
         return data;
     } catch (error) {
         throw new Error('Erro ao obter dados da API:', error);
