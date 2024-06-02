@@ -14,6 +14,9 @@ export const Header = () => {
             "borderRadius": "15px"
         }
     };
+    
+    const iconSize = 25;
+
     return (
         <>
             <header className="box-header" >
@@ -30,7 +33,7 @@ export const Header = () => {
                             <BootstrapIcon
                                 iconName="FolderFill"
                                 color="var(--solidBlueEve)"
-                                size={20}
+                                size={iconSize}
                                 className="align-top"
                             />
                         } CSS={styleJs.ButtonStyle}></Button>
@@ -39,7 +42,7 @@ export const Header = () => {
                             <BootstrapIcon
                                 iconName="FileEarmarkArrowDownFill"
                                 color="var(--solidBlueEve)"
-                                size={20}
+                                size={iconSize}
                                 className="align-top"
                             />
                         } CSS={styleJs.ButtonStyle}></Button>
@@ -49,7 +52,7 @@ export const Header = () => {
                                 <BootstrapIcon
                                     iconName="BoxArrowRight"
                                     color="var(--solidRedEve)"
-                                    size={20}
+                                    size={iconSize}
                                     className="align-top"
                                 />
                             } CSS={styleJs.ButtonStyle}></Button>
