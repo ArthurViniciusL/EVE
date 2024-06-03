@@ -1,33 +1,29 @@
 @import url('../../styles/style.css');
 
-.box-home-content {
-    width: 100vw;
-    height: 100vh;
-    overflow: scroll;
+.home-main {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--smoothBlueEve);
+    border-radius: var(conersBorderRadiusEve);
+
+}
+
+.home-section {
+    width: 98vw;
+    height: 98vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
-    background-color: var(--smoothBlueEve);
-}
-
-section {
-    width: 98%;
-    height: 98%;
+    overflow: auto;
     background-color: white;
-    overflow: scroll;
     border-radius: var(--conersBorderRadiusEve);
-    flex-direction: column;
-    
-}
-.home-footer {
-    width: 100%;
-    height: 300px;
-    background-color: red;
 }
 
-.pseudo-footer {
-    width: 100%;
-    height: 20px;
-    background-color: transparent;
+.home-Directory-box {
+    display: flex;
+    justify-content: center;
 }

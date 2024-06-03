@@ -1,7 +1,9 @@
-const URL = 'http://localhost:8080/folders';
+//const URL = 'http://localhost:8080/folders';
 //(`${URL}/${FOLDER_ID}/subfolders`);
 
-const URL_JUST_GET = 'https://arthurviniciusl.github.io/ApiTest/folders.json'
+const URL = process.env.REACT_APP_API_URL;
+
+const URL_JUST_GET =  'https://arthurviniciusl.github.io/ApiTest/folders.json'
 
 export async function getFolders(...PATH_FOLDER) {
     
@@ -19,7 +21,7 @@ export async function getFolders(...PATH_FOLDER) {
 
 };
 
-export function getSubFolders(id, folders) {
+export function createFolder(father_id, folder_name) {
     /*     const url = `http://localhost:8080/folders/${id}/subfolders`; */
 }
 

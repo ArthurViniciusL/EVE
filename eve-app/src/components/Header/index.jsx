@@ -5,7 +5,7 @@ import { BootstrapIcon } from '../../utils/Main';
 import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
 
-export const Header = ({PATH_DIR_BAR}) => {
+export const Header = () => {
     const styleJs = {
         "ButtonStyle": {
             "width": "60px",
@@ -18,17 +18,16 @@ export const Header = ({PATH_DIR_BAR}) => {
     const iconSize = 25;
     
     // const texto_test = "/home/arthur/Downloads/Open_Sans/static/"
-
+    
     return (
         <>
             <header className="box-header" >
                 <div className="header-content">
-
                     <div className='box-logo'>
                         <EveLogo WIDTH={'100%'} HEIGHT={'fit-content'} CURSOR={'pointer'}></EveLogo>
                     </div>
 
-                    <DirectoryBar PATH={PATH_DIR_BAR}></DirectoryBar>
+                    <DirectoryBar/>
 
                     <div className='Header-box-button'>
                         <Button LABEL={

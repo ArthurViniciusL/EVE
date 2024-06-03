@@ -2,48 +2,56 @@ import { Component } from "react";
 import './directory-style.css';
 import { FolderComponent } from "../../components/Folder/index.jsx";
 import { getFolders } from '../../utils/ApiService.js';
-import { Header } from "../../components/Header/index.jsx";
+import { PathNameContext } from "../../utils/PathProvieder.js";
 
 export default class Directory extends Component {
     constructor(props) {
         super(props);
         this.state = {
             path: '',
-            folders: [], // Inicializa o estado folders como uma lista vazia
-            dirName: ['home']
+            folders: []
         };
+
     }
+
+    static contextType = PathNameContext;
 
     async componentDidMount() {
-        await this.loadFolders();
+        this.loadFolders();
     }
 
-    loadFolders = async (folder_id = '', folder_name) => {
-
+    // 
+    loadFolders = async (folder_id) => {
         try {
             const folders = await getFolders(folder_id);
-            //this.setState({ folders })
-            this.setState((prevState) => ({
-                folders,
-                dirName: [...prevState.dirName, folder_name]
-            }));
+            this.setState(() => (
+                { folders }
+            ));
+
+            this.setPathNameInDirBar();
+
         } catch (erro) {
             console.log('Erro: ' + erro + ' ao obter a pasta.')
         }
+    }
+
+    setPathNameInDirBar(folder_name) {
+        const { addPathName } = this.context;
+        addPathName(folder_name);
     }
 
     handleFolderClick = (folder_id, folder_name) => {
         const path = `/${folder_id}/subfolders`;
         const name = `/${folder_name}`;
         this.loadFolders(path, name);
+        this.setPathNameInDirBar(name);
     };
 
     render() {
-        const { folders, dirName } = this.state;
+        const { folders } = this.state;
+
         return (
             <>
-                <Header PATH_DIR_BAR={dirName}></Header>
-
                 <div className='dir-content'>
                     {
                         (folders).map((folder) => (

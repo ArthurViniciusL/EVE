@@ -1,4 +1,3 @@
-
 .dir-content {
     display: grid;
     justify-content: center;
@@ -7,23 +6,26 @@
 }
 
 .void-dir {
-    width: 90vw;
-    height: 80vh;
     display: flex;
-    align-items: center;
+    width: 89vw;
+    height: 86vh;
     justify-content: center;
-    /* color: var(--smoothBlueEve); */
-   /*  border: red solid; */
+    align-items: center;
+    overflow: hidden;
 }
 
 
-@media (max-width: 1000px)  {
+@media (max-width: 1000px) {
     .dir-content {
         grid-template-columns: repeat(4, 190px);
     }
 }
 
 @media (max-width: 600px) {
+    .void-dir {
+        width: 96vw;
+    }
+
     .dir-content {
         grid-template-columns: repeat(2, 200px);
     }
