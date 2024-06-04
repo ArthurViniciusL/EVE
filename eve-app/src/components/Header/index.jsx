@@ -4,6 +4,7 @@ import { Button } from "../../components/Button";
 import { BootstrapIcon } from '../../utils/Main';
 import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
+import { Input } from '../Input';
 
 export const Header = () => {
     const styleJs = {
@@ -14,11 +15,11 @@ export const Header = () => {
             "borderRadius": "15px"
         }
     };
-    
+
     const iconSize = 25;
-    
+
     // const texto_test = "/home/arthur/Downloads/Open_Sans/static/"
-    
+
     return (
         <>
             <header className="box-header" >
@@ -27,26 +28,29 @@ export const Header = () => {
                         <EveLogo WIDTH={'100%'} HEIGHT={'fit-content'} CURSOR={'pointer'}></EveLogo>
                     </div>
 
-                    <DirectoryBar/>
+                    <DirectoryBar />
 
                     <div className='Header-box-button'>
                         <Button LABEL={
                             <BootstrapIcon
-                                iconName="ArchiveFill"
+                                iconName="Archive"
                                 color="var(--solidBlueEve)"
                                 size={iconSize}
                                 className="align-top"
                             />
-                        } CSS={styleJs.ButtonStyle}></Button>
+                        } CSS={styleJs.ButtonStyle} />
 
                         <Button LABEL={
-                            <BootstrapIcon
-                                iconName="FileEarmarkArrowDownFill"
-                                color="var(--solidBlueEve)"
-                                size={iconSize}
-                                className="align-top"
-                            />
-                        } CSS={styleJs.ButtonStyle}></Button>
+                            <Input TYPE={'file'} LABEL={
+                                <BootstrapIcon
+                                    iconName="FileEarmarkArrowDown"
+                                    color="var(--solidBlueEve)"
+                                    size={iconSize}
+                                    className="align-top"
+                                />
+                            }></Input>
+                        } CSS={styleJs.ButtonStyle} />
+
 
                         <Link to={"/"}>
                             <Button LABEL={
@@ -56,8 +60,9 @@ export const Header = () => {
                                     size={iconSize}
                                     className="align-top"
                                 />
-                            } CSS={styleJs.ButtonStyle}></Button>
+                            } CSS={styleJs.ButtonStyle} />
                         </Link>
+
                     </div>
                 </div>
 

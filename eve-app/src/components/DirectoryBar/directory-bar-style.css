@@ -3,7 +3,6 @@
 .directory-bar-content {
     min-width: 30%;
     max-width: 30%;
-
     min-height: 45px;
     display: flex;
     /* overflow: hidden; */
@@ -11,6 +10,7 @@
     white-space: nowrap;
     align-items: center;
     justify-content: end;
+
     padding-left: 10px;
     padding-right: 10px;
     font-size: small;
