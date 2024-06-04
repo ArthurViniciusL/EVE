@@ -20,7 +20,7 @@ export default class Directory extends Component {
         this.loadFolders();
     }
 
-    // 
+    // = '/1/subfolders'
     loadFolders = async (folder_id) => {
         try {
             const folders = await getFolders(folder_id);

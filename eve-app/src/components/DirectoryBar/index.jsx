@@ -2,6 +2,8 @@
 import { useContext } from 'react';
 import './directory-bar-style.css'
 import { PathNameContext } from '../../utils/PathProvieder';
+import { Button } from '../Button';
+import { BootstrapIcon } from '../../utils/Main';
 
 export const DirectoryBar = () => {
 
@@ -16,9 +18,13 @@ export const DirectoryBar = () => {
                         <p>home{pageNames}</p>
                     </div>
                 </div>
-
                 {/*  <p>{sliceName(texto, 10)}</p> */}
-
+                <Button LABEL={
+                    <BootstrapIcon iconName="Search"
+                        color="var(--solidBlueEve)"
+                        size={20}
+                        className="align-top"></BootstrapIcon>
+                }></Button>
             </div>
         </>
     )

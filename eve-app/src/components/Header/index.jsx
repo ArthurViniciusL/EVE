@@ -32,7 +32,7 @@ export const Header = () => {
                     <div className='Header-box-button'>
                         <Button LABEL={
                             <BootstrapIcon
-                                iconName="FolderFill"
+                                iconName="ArchiveFill"
                                 color="var(--solidBlueEve)"
                                 size={iconSize}
                                 className="align-top"
