@@ -17,7 +17,7 @@ export const Header = () => {
     };
 
     const iconSize = 25;
-
+   
     // const texto_test = "/home/arthur/Downloads/Open_Sans/static/"
 
     return (

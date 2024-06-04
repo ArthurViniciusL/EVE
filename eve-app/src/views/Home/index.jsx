@@ -14,7 +14,7 @@ export class Home extends Component {
                 <PathNameProvider>
                     <section className='home-section'>
                         <Header />
-                        <div class='home-Directory-box'>
+                        <div className='home-Directory-box'>
                             <Directory key={''}></Directory>
 
                         </div>

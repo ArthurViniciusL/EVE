@@ -1,5 +1,3 @@
-import { Button } from "../Button"
-
 export const Input = ({ TYPE, LABEL, NAME }) => {
     return (
         <>

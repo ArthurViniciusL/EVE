@@ -21,7 +21,7 @@ export default class Directory extends Component {
     }
 
     // = '/1/subfolders'
-    loadFolders = async (folder_id) => {
+    loadFolders = async (folder_id = '/1/subfolders')  => {
         try {
             const folders = await getFolders(folder_id);
             this.setState(() => (
