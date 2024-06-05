@@ -12,12 +12,6 @@ export function sliceName(word, wordLength) {
     if (word.length > wordLength) {
         const sliceWord = word.slice(0,15);
         healthyWord = `${sliceWord}...`;
-
     }
-
-
-
-
     return healthyWord;   
-
 }

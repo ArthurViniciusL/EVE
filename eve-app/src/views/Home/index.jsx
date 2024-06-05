@@ -1,26 +1,38 @@
 import './home-style.css'
 import { Component } from "react";
-import { PathNameProvider } from '../../utils/PathProvieder';
 import { Header } from "../../components/Header";
 import Directory from "../../views/Directory";
 
 
 export class Home extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            path: '',
+            folderPaths: ['home']
+        }
+        this.handleFolderChange = this.handleFolderChange.bind(this);
+    }
+
+    handleFolderChange(updatePath) {
+        this.setState(setStateInfo => ({
+            folderPaths: [...setStateInfo.folderPaths, updatePath]
+        }));
+    }  
+
     render() {
 
         return (
             <main className='home-main'>
-                <PathNameProvider>
-                    <section className='home-section'>
-                        <Header />
-                        <div className='home-Directory-box'>
-                            <Directory key={''}></Directory>
+                <section className='home-section'>
+                    <Header FOLDER_PATH={this.state.folderPaths}/>
 
-                        </div>
-                    </section>
-                </PathNameProvider >
-            </main>
+                    <div className='home-Directory-box'>
+                        <Directory DIRECTORY_CHANGES={this.handleFolderChange} FOLDER={''} key={''}></Directory>
+                    </div>
+                </section>
+            </main >
         )
     }
 }

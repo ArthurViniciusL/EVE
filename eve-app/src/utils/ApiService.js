@@ -5,16 +5,16 @@ const URL = process.env.REACT_APP_API_URL;
 
 const URL_JUST_GET =  'https://arthurviniciusl.github.io/ApiTest/folders.json'
 
-export async function getFolders(...PATH_FOLDER) {
+export async function getFolders(PATH_FOLDER) {
     
-    // const defaultPath = `${URL}${PATH_FOLDER}` || URL
-    const defaultPath = URL_JUST_GET
+    const defaultPath = `${URL}${PATH_FOLDER}` || URL
+    // const defaultPath = URL_JUST_GET
 
     try {
         const response = await fetch(defaultPath);
-        const data = await response.json();
-        console.log("Path Folder: " + data);
-        return data;
+        const jsonApi = await response.json();
+        console.log("Path Folder: " + jsonApi);
+        return jsonApi;
     } catch (error) {
         throw new Error('Erro ao obter dados da API:', error);
     }

@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
 import { Input } from '../Input';
 
-export const Header = () => {
+export const Header = ({ FOLDER_PATH }) => {
+
     const styleJs = {
         "ButtonStyle": {
             "width": "60px",
@@ -17,8 +18,6 @@ export const Header = () => {
     };
 
     const iconSize = 25;
-   
-    // const texto_test = "/home/arthur/Downloads/Open_Sans/static/"
 
     return (
         <>
@@ -28,7 +27,7 @@ export const Header = () => {
                         <EveLogo WIDTH={'100%'} HEIGHT={'fit-content'} CURSOR={'pointer'}></EveLogo>
                     </div>
 
-                    <DirectoryBar />
+                    <DirectoryBar Path={FOLDER_PATH} />
 
                     <div className='Header-box-button'>
                         <Button LABEL={
