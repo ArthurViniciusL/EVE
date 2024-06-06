@@ -6,7 +6,7 @@ import { FileComponent } from '../../components/Files/index.jsx';
 
 const Directory = (props) => {
     const folder = props.folderId;
-    const file = props.fileId;
+    const file = props.folderId;
     
     const [FOLDERS, loadFolders] = useState([]);
     const [FILES, loadFiles] = useState([]);
@@ -41,6 +41,7 @@ const Directory = (props) => {
     const getDataFolderComponent = async (folder_id, folder_name) => {
         props.openFolder(folder_id);
         props.setPathNameInDirBar(folder_name);
+        props.setFileId(folder_id)
     };
 
     return (

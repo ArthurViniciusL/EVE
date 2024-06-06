@@ -42,7 +42,7 @@ export const Header = (props) => {
         */
         // Atualizar o estado com a nova lista de arquivos
         
-        // props.setFilesInState(file);
+        props.sendFile(file)
     };
     const iconSize = 25;
 

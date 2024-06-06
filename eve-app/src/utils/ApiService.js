@@ -4,12 +4,14 @@
 const URL = process.env.REACT_APP_API_URL;
 const URL_FILES = process.env.REACT_APP_API_FILE_URL;
 
-export async function getFolders(FOLDER_PATH) {
+export async function getFolders(folder_id) {
+    
+    const path = `/${folder_id}/subfolders` 
 
-    const defaultPath = `${URL}${FOLDER_PATH}` || URL
+    const formattedPath = `${URL}${path}` || URL
 
     try {
-        const response = await fetch(defaultPath);
+        const response = await fetch(formattedPath);
         const jsonApi = await response.json();
         //console.log("Path Folder: " + jsonApi);
         return jsonApi;
@@ -20,16 +22,16 @@ export async function getFolders(FOLDER_PATH) {
 
 };
 
-export function createFolder(father_id, folder_name) {
+export function postFolder(father_id, folder_name) {
     /*     const url = `http://localhost:8080/folders/${id}/subfolders`; */
 }
 
 export async function getFiles(folder_id) {
     
-    const defaultPath = `${URL_FILES}/folder/${folder_id}`
+    const formattedPath = `${URL_FILES}/folder/${folder_id}` // || `${URL_FILES}/folder/1`
 
     try {
-        const response = await fetch(defaultPath);
+        const response = await fetch(formattedPath);
         const jsonApi = await response.json();
         //console.log("File: " + jsonApi);
         return jsonApi;
@@ -39,16 +41,37 @@ export async function getFiles(folder_id) {
     }
 }
 
-export function createFile(NAME, FOLDER_ID) {
-    
-    const restMethod = {
-        method: 'POST',
-
-    }
+export function postFile(folder_id, file_name) {
 
     const file = {
-        folderId: FOLDER_ID,
-        name: NAME,
+        folderId: folder_id,
+        name: file_name,
         content: null // para a conversão em base64
-    }
+    };
+
+    const restMethod = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // Define o cabeçalho 'Content-Type' como 'JSON'
+          },
+          body: JSON.stringify(file)
+    };
+
+    fetch(URL_FILES, restMethod)
+        .then(status => {
+            if (!status.ok) {
+                throw new Error('Erro de requisição: ' + status.statusText)
+            }
+            return status.json
+        })
+        .then(serverResponse => {
+            console.log('Resposta do servidor: ' + serverResponse);
+        })
+        .catch(error => {
+            console.error('Erro inesperado', error);
+        })
+
 }
+
+
+//postFile(1,'meu arquivo de teste.png')
