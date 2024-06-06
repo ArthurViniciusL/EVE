@@ -1,15 +1,16 @@
 import './file-style.css';
 import { ReactComponent as FileIcon } from '../../assets/imgs/eve_file_icon.svg';
-import { sliceName } from '../../utils/sliceNames';
+import { sliceName } from '../../utils/Main.js';
 
 
-export const FileComponent = ({ ID, NAME }) => {
-
+export const FileComponent = ({ NAME }) => {
+    const defaultName = NAME || "arquivo.mov"
+    const wordLength = 15;
     return (
         <>
-            <div key={ID} className="file-component" >
+            <div className="file-component" >
                 <FileIcon></FileIcon>
-                <p className='file-name'>{sliceName(NAME)}</p>
+                <p className='file-name'>{sliceName(defaultName, wordLength)}</p>
             </div>
         </>
     );

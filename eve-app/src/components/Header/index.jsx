@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
 import { Input } from '../Input';
 
-export const Header = ({ FOLDER_PATH }) => {
+export const Header = ({ FOLDER_PATH, SEND_FILES, UPDATE_FILES }) => {
 
     const styleJs = {
         "ButtonStyle": {
@@ -17,6 +17,13 @@ export const Header = ({ FOLDER_PATH }) => {
         }
     };
 
+    const handleFileChange = () => {
+        const newFile = { 'name': 'arquivo', 'extension': '.txt' };
+        const updatedFiles = [...SEND_FILES, newFile]; // Criar uma nova lista com o novo arquivo adicionado
+
+        // Atualizar o estado com a nova lista de arquivos
+        UPDATE_FILES(updatedFiles);
+    };
     const iconSize = 25;
 
     return (
@@ -39,17 +46,18 @@ export const Header = ({ FOLDER_PATH }) => {
                             />
                         } CSS={styleJs.ButtonStyle} />
 
-                        <Button LABEL={
-                            <Input TYPE={'file'} LABEL={
-                                <BootstrapIcon
-                                    iconName="FileEarmarkArrowDown"
-                                    color="var(--solidBlueEve)"
-                                    size={iconSize}
-                                    className="align-top"
-                                />
-                            }></Input>
-                        } CSS={styleJs.ButtonStyle} />
-
+                        <div onClick={handleFileChange}>
+                            <Button LABEL={
+                                <Input TYPE={'file'} LABEL={
+                                    <BootstrapIcon
+                                        iconName="FileEarmarkArrowDown"
+                                        color="var(--solidBlueEve)"
+                                        size={iconSize}
+                                        className="align-top"
+                                    />
+                                }></Input>
+                            } CSS={styleJs.ButtonStyle} />
+                        </div>
 
                         <Link to={"/"}>
                             <Button LABEL={
@@ -61,9 +69,9 @@ export const Header = ({ FOLDER_PATH }) => {
                                 />
                             } CSS={styleJs.ButtonStyle} />
                         </Link>
-
                     </div>
                 </div>
+
 
             </header >
         </>

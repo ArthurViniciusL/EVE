@@ -2,55 +2,44 @@ import './directory-style.css';
 import { FolderComponent } from "../../components/Folder/index.jsx";
 import { useEffect, useState } from 'react';
 import { getFolders } from '../../utils/ApiService.js';
+import { FileComponent } from '../../components/Files/index.jsx';
 
-const Directory = ({DIRECTORY_CHANGES}) => {
+
+const Directory = ({ DIRECTORY_CHANGES, FOLDER, GO_TO_FOLDER, SEND_FILES }) => {
 
     const [folders, setDadosApi] = useState([]);
-    // '/1/subfolders'
-    const [folder, goToFolder] = useState('');
-
     
+    const files = SEND_FILES
 
     useEffect(() => {
         const API_REQUEST = async () => {
-            const api = await getFolders(folder);
+            const api = await getFolders(FOLDER);
+            //const files = SEND_FILES
             if (api) {
                 setDadosApi(api)
             }
         }
         API_REQUEST();
-    }, [folder]);
+    }, [FOLDER]);
 
-    // ------------------------------------------------------------------------------------------
-    // UseEffect para atualizar os dados quando requisitarAPI tiver uma alteração
     useEffect(() => {
         const intervalId = setInterval(async () => {
-            const dadosDaAPI = await getFolders(folder);
+            const dadosDaAPI = await getFolders(FOLDER);
             if (dadosDaAPI) {
                 setDadosApi(dadosDaAPI);
             }
-        }, 10000); // Define um intervalo de 10 segundos para requisitarAPI
+        }, 10000);
 
-        return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar o componente
-    }, [folder]);
-    // ------------------------------------------------------------------------------------------
-
-    /*    const loadFolders = async (folder_id) => {
-   
-       }
-   
-       const setPathNameInDirBar = (folder_name) => {
-   
-       }
-   
-        */
+        return () => clearInterval(intervalId);
+    }, [FOLDER]);
 
     const getData = async (folder_id, folder_name) => {
         const pathName = `/${folder_id}/subfolders`;
-        const folderName =`/${folder_name}`;
-        goToFolder(pathName);
+        const folderName = `/${folder_name}`;
+        GO_TO_FOLDER(pathName);
         DIRECTORY_CHANGES(folderName);
     };
+
 
     return (
         <>
@@ -62,8 +51,20 @@ const Directory = ({DIRECTORY_CHANGES}) => {
                         </div>
                     ))
                 }
+
+
                 {
-                    folders.length === 0 && (
+                    files.length > 0 && (files.map((file, index) => (
+                        <div key={index}>
+                            {/* file.extension */}
+                            <FileComponent NAME={file.name + file.extension} />
+                        </div>
+                    )))
+                }
+
+
+                {
+                    (folders.length && files.length) === 0 && (
                         <div className="void-dir">
                             <p>Diretório vazio!</p>
                         </div>
