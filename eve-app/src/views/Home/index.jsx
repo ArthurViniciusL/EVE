@@ -8,62 +8,61 @@ export class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            path: '',
-            filesId: '1',
-            filesContent: [{}],
-            folderPaths: ['home'],
+            folderId: '',
+            filesId: '2',
+            directoryBar: ['home'],
+            folders: [],
+            files: []
         }
+
         this.handleFolderChange = this.handleFolderChange.bind(this);
         this.goToHome = this.goToHome.bind(this);
-        this.goFolder = this.goFolder.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this); // Adiciona a função de atualização de arquivos ao estado
+        this.openFolder = this.openFolder.bind(this);
+        
+        //this.handleFileChange = this.handleFileChange.bind(this); // Adiciona a função de atualização de arquivos ao estado
+        //this.createFolder = this.createFolder.bind(this);
     }
-
-    handleFolderChange(path) {
+    
+    handleFolderChange(folder_name) {
         this.setState(prevState => ({
-            folderPaths: [...prevState.folderPaths, path]
+            directoryBar: [...prevState.directoryBar, `/${folder_name}`]
         }));
     }
 
-    goToHome(home) {
-        this.setState({ path: home })
-        this.setState({ folderPaths: 'home' })
+    openFolder(folder_id) {
+        /* o id deve ir formatado como /id/subfolders */
+        this.setState({ folderId: `/${folder_id}/subfolders` });
     }
-
-    goFolder(dirPath) {
-        this.setState({ path: dirPath });
+    
+    goToHome(home_path) {
+        this.setState({ folderId: home_path })
+        this.setState({ directoryBar: 'home' })
     }
-
-    handleFileChange(file) {
-        this.setState(prevState => ({
-            filesContent: [...prevState.filesContent, file]
-        }));
-    }
-
-
+    
+        
     render() {
-
-        const { path, filesId, filesContent } = this.state;
-
+        
+        const { folderId, directoryBar, filesId } = this.state;
+        
         return (
             <main className='home-main'>
                 <section className='home-section'>
 
                     <Header
-                        folderPath={this.state.folderPaths}
+                        folderPathName={directoryBar}
                         setHome={this.goToHome}
-                        filesState={filesId}
-                        setFilesState={this.handleFileChange}
+                        
+                        fileId={filesId}
                     />
 
                     <div className='home-Directory-box'>
                         <Directory
                             key={''}
-                            foldersState={path}
-                            setPathName={this.handleFolderChange}
-                            goToFolder={this.goFolder}
-                            filesState={filesId}
-                            filesContent={filesContent}
+                            folderId={folderId}
+                            setPathNameInDirBar={this.handleFolderChange}
+                            openFolder={this.openFolder}
+                            
+                            fileId={filesId}
                         ></Directory>
                     </div>
 

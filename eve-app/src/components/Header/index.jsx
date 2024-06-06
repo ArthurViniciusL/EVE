@@ -23,16 +23,26 @@ export const Header = (props) => {
         props.setHome('')
     }
 
-    const handleFileChange = () => {
-        const newFile = { 'name': 'arquivo', 'extension': '.txt' };
-        const updatedFiles = [...props.filesState, newFile]; // Criar uma nova lista com o novo arquivo adicionado
+    const handleFolderChange = () => {
+        const foldersName = window.prompt('Só um aleta: Qual o nome da pasta?')
 
-        // Atualizar o estado com a nova lista de arquivos
+        /*
+        OBG: Aqui só está mandando para a exibição, para inserir no back-end implemente a função de createFolder()
+        */
+
+        // props.setFolderState(foldersName)
+    }
+
+    const handleOpenLocalFiles = () => {
+        const newFile = { 'name': 'arquivo.txt'};
+        const file = [...props.fileId, newFile];
 
         /*
         OBG: Aqui só está mandando para a exibição, para inserir no back-end implemente a função de createFile()
         */
-        props.setFilesState(updatedFiles);
+        // Atualizar o estado com a nova lista de arquivos
+        
+        // props.setFilesInState(file);
     };
     const iconSize = 25;
 
@@ -44,23 +54,26 @@ export const Header = (props) => {
                         <EveLogo WIDTH={'100%'} HEIGHT={'fit-content'} CURSOR={'pointer'}></EveLogo>
                     </div>
 
-                    <DirectoryBar Path={props.folderPath} />
+                    <DirectoryBar Path={props.folderPathName} />
 
                     <div className='Header-box-button'>
-                        <Button LABEL={
-                            <BootstrapIcon
-                                iconName="Archive"
-                                color="var(--solidBlueEve)"
-                                size={iconSize}
-                                className="align-top"
-                            />
-                        } CSS={styleJs.ButtonStyle} />
 
-                        <div onClick={handleFileChange}>
+                        <div onClick={handleFolderChange}>
+                            <Button LABEL={
+                                <BootstrapIcon
+                                    iconName="Archive"
+                                    color="var(--solidBlueEve)"
+                                    size={iconSize}
+                                    className="align-top"
+                                />
+                            } CSS={styleJs.ButtonStyle} />
+                        </div>
+
+                        <div onClick={handleOpenLocalFiles}>
                             <Button LABEL={
                                 <Input TYPE={'file'} LABEL={
                                     <BootstrapIcon
-                                        iconName="FileEarmarkArrowDown"
+                                        iconName='FileEarmarkArrowDown'
                                         color="var(--solidBlueEve)"
                                         size={iconSize}
                                         className="align-top"

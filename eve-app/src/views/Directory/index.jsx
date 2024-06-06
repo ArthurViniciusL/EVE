@@ -4,64 +4,58 @@ import { useEffect, useState } from 'react';
 import { getFiles, getFolders } from '../../utils/ApiService.js';
 import { FileComponent } from '../../components/Files/index.jsx';
 
-
 const Directory = (props) => {
-    // DIRECTORY_CHANGES, FOLDER, GO_TO_FOLDER, SEND_FILES
-    const FolderPath = props.foldersState;
-    const FileId = props.filesState;
-
+    const folder = props.folderId;
+    const file = props.fileId;
     
-    const [foldersObject, loadFolders] = useState([]);
-    const [filesObject, loadFiles] = useState([]);
-    
-    // const test_file_view = props.filesContent;
+    const [FOLDERS, loadFolders] = useState([]);
+    const [FILES, loadFiles] = useState([]);
 
     useEffect(() => {
         const API_REQUEST = async () => {
-            const apiFolder = await getFolders(FolderPath);
-            const apiFiles = await getFiles(FileId)
-            //const files = SEND_FILES
+            const apiFolder = await getFolders(folder);
+            const apiFiles = await getFiles(file);
+
             if (apiFolder) {
                 loadFolders(apiFolder)
                 loadFiles(apiFiles)
             }
         }
         API_REQUEST();
-    }, [FolderPath, FileId]);
+    }, [folder, file]);
 
+    // -------------------------------------------------------------------------------------------
+    // Componente para atualizar a pagina sozinha em x segundos. OBS: otimizar com apenas um useEffect
     useEffect(() => {
         const intervalId = setInterval(async () => {
-            const dadosDaAPI = await getFolders(FolderPath);
+            const dadosDaAPI = await getFolders(folder);
             if (dadosDaAPI) {
                 loadFolders(dadosDaAPI);
             }
         }, 10000);
 
         return () => clearInterval(intervalId);
-    }, [FolderPath, FileId]);
+    }, [folder, file]);
+    // -------------------------------------------------------------------------------------------
 
-    const getData = async (folder_id, folder_name) => {
-        const pathName = `/${folder_id}/subfolders`;
-        const folderName = `/${folder_name}`;
-        props.goToFolder(pathName);
-        props.setPathName(folderName);
+    const getDataFolderComponent = async (folder_id, folder_name) => {
+        props.openFolder(folder_id);
+        props.setPathNameInDirBar(folder_name);
     };
-
 
     return (
         <>
             <div className='dir-content'>
                 {
-                    (foldersObject).map((folder) => (
-                        <div key={folder.id} onClick={() => getData(folder.id, folder.name)}>
+                    (FOLDERS).map((folder) => (
+                        <div key={folder.id} onClick={() => getDataFolderComponent(folder.id, folder.name)}>
                             <FolderComponent NAME={folder.name} />
                         </div>
                     ))
-
                 }
 
                 {
-                    (filesObject).map((file, index) => (
+                    (FILES).map((file, index) => (
                         <div key={index}>
                             <FileComponent NAME={file.name} />
                         </div>
@@ -69,9 +63,10 @@ const Directory = (props) => {
                 }
 
                 {
-                    (foldersObject.length || filesObject.length) === 0 && (
+                    (FOLDERS.length || FILES.length) === 0 && (
                         <div className="void-dir">
-                            <p>Diretório vazio!</p>
+                            <h3 style={{'color':'#aaadb6'}}>Diretório vazio!</h3>
+                            
                         </div>
                     )
                 }
