@@ -4,7 +4,7 @@ import { sliceName } from '../../utils/Main.js';
 
 
 export const FileComponent = ({ NAME }) => {
-    const defaultName = NAME || "arquivo.mov"
+    const defaultName = NAME || 'FileComponent'
     const wordLength = 15;
     return (
         <>

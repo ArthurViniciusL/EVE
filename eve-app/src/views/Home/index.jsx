@@ -9,49 +9,61 @@ export class Home extends Component {
         super(props);
         this.state = {
             path: '',
+            filesId: '1',
+            filesContent: [{}],
             folderPaths: ['home'],
-            files: [{}]
         }
         this.handleFolderChange = this.handleFolderChange.bind(this);
-        this.goToFolder = this.goToFolder.bind(this);
-        this.updateFiles = this.updateFiles.bind(this); // Adiciona a função de atualização de arquivos ao estado
-   
+        this.goToHome = this.goToHome.bind(this);
+        this.goFolder = this.goFolder.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this); // Adiciona a função de atualização de arquivos ao estado
     }
 
-    handleFolderChange(updatePath) {
+    handleFolderChange(path) {
         this.setState(prevState => ({
-            folderPaths: [...prevState.folderPaths, updatePath]
+            folderPaths: [...prevState.folderPaths, path]
         }));
     }
 
-    goToFolder(dirPath) {
+    goToHome(home) {
+        this.setState({ path: home })
+        this.setState({ folderPaths: 'home' })
+    }
+
+    goFolder(dirPath) {
         this.setState({ path: dirPath });
     }
 
-    updateFiles(updatedFiles) {
-        this.setState({ files: updatedFiles });
+    handleFileChange(file) {
+        this.setState(prevState => ({
+            filesContent: [...prevState.filesContent, file]
+        }));
     }
+
 
     render() {
 
-        const {path, files} = this.state;
-
+        const { path, filesId, filesContent } = this.state;
 
         return (
             <main className='home-main'>
                 <section className='home-section'>
 
-                    <Header FOLDER_PATH={this.state.folderPaths}
-                        SEND_FILES={files} 
-                        UPDATE_FILES={this.updateFiles} />
+                    <Header
+                        folderPath={this.state.folderPaths}
+                        setHome={this.goToHome}
+                        filesState={filesId}
+                        setFilesState={this.handleFileChange}
+                    />
 
                     <div className='home-Directory-box'>
                         <Directory
                             key={''}
-                            DIRECTORY_CHANGES={this.handleFolderChange}
-                            FOLDER={path}
-                            GO_TO_FOLDER={this.goToFolder}
-                            SEND_FILES={files} UPDATE_FILES={this.updateFiles}
+                            foldersState={path}
+                            setPathName={this.handleFolderChange}
+                            goToFolder={this.goFolder}
+                            filesState={filesId}
+                            filesContent={filesContent}
                         ></Directory>
                     </div>
 

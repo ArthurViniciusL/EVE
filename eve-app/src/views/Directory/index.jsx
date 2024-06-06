@@ -1,43 +1,50 @@
 import './directory-style.css';
 import { FolderComponent } from "../../components/Folder/index.jsx";
 import { useEffect, useState } from 'react';
-import { getFolders } from '../../utils/ApiService.js';
+import { getFiles, getFolders } from '../../utils/ApiService.js';
 import { FileComponent } from '../../components/Files/index.jsx';
 
 
-const Directory = ({ DIRECTORY_CHANGES, FOLDER, GO_TO_FOLDER, SEND_FILES }) => {
+const Directory = (props) => {
+    // DIRECTORY_CHANGES, FOLDER, GO_TO_FOLDER, SEND_FILES
+    const FolderPath = props.foldersState;
+    const FileId = props.filesState;
 
-    const [folders, setDadosApi] = useState([]);
     
-    const files = SEND_FILES
+    const [foldersObject, loadFolders] = useState([]);
+    const [filesObject, loadFiles] = useState([]);
+    
+    // const test_file_view = props.filesContent;
 
     useEffect(() => {
         const API_REQUEST = async () => {
-            const api = await getFolders(FOLDER);
+            const apiFolder = await getFolders(FolderPath);
+            const apiFiles = await getFiles(FileId)
             //const files = SEND_FILES
-            if (api) {
-                setDadosApi(api)
+            if (apiFolder) {
+                loadFolders(apiFolder)
+                loadFiles(apiFiles)
             }
         }
         API_REQUEST();
-    }, [FOLDER]);
+    }, [FolderPath, FileId]);
 
     useEffect(() => {
         const intervalId = setInterval(async () => {
-            const dadosDaAPI = await getFolders(FOLDER);
+            const dadosDaAPI = await getFolders(FolderPath);
             if (dadosDaAPI) {
-                setDadosApi(dadosDaAPI);
+                loadFolders(dadosDaAPI);
             }
         }, 10000);
 
         return () => clearInterval(intervalId);
-    }, [FOLDER]);
+    }, [FolderPath, FileId]);
 
     const getData = async (folder_id, folder_name) => {
         const pathName = `/${folder_id}/subfolders`;
         const folderName = `/${folder_name}`;
-        GO_TO_FOLDER(pathName);
-        DIRECTORY_CHANGES(folderName);
+        props.goToFolder(pathName);
+        props.setPathName(folderName);
     };
 
 
@@ -45,26 +52,24 @@ const Directory = ({ DIRECTORY_CHANGES, FOLDER, GO_TO_FOLDER, SEND_FILES }) => {
         <>
             <div className='dir-content'>
                 {
-                    (folders).map((folder) => (
+                    (foldersObject).map((folder) => (
                         <div key={folder.id} onClick={() => getData(folder.id, folder.name)}>
                             <FolderComponent NAME={folder.name} />
                         </div>
                     ))
+
                 }
 
-
                 {
-                    files.length > 0 && (files.map((file, index) => (
+                    (filesObject).map((file, index) => (
                         <div key={index}>
-                            {/* file.extension */}
-                            <FileComponent NAME={file.name + file.extension} />
+                            <FileComponent NAME={file.name} />
                         </div>
-                    )))
+                    ))
                 }
 
-
                 {
-                    (folders.length && files.length) === 0 && (
+                    (foldersObject.length || filesObject.length) === 0 && (
                         <div className="void-dir">
                             <p>Diretório vazio!</p>
                         </div>
