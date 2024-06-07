@@ -1,0 +1,26 @@
+@import url('../../styles/style.css');
+
+.folder-component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    max-height: fit-content;
+    padding: 10px;
+    margin: 20px;
+    text-overflow: clip;
+    cursor: pointer;
+    border-radius: var(--conersBorderRadiusEve);
+
+}
+
+.folder-component:hover {
+    text-decoration: underline;
+    background-color: var(--smoothBlueEve);
+}
+
+.folder-name {
+    text-align: center;
+/*     text-align: center; */
+    font-size: large;
+}

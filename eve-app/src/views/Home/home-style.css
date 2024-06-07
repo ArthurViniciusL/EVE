@@ -1,0 +1,29 @@
+@import url('../../styles/style.css');
+
+.home-main {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--smoothBlueEve);
+    border-radius: var(conersBorderRadiusEve);
+
+}
+
+.home-section {
+    width: 98vw;
+    height: 98vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow: auto;
+    background-color: white;
+    border-radius: var(--conersBorderRadiusEve);
+}
+
+.home-Directory-box {
+    display: flex;
+    justify-content: center;
+}

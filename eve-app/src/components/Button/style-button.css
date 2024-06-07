@@ -1,0 +1,40 @@
+@import url('../../styles/style.css');
+
+.generic-button {
+    border: none;
+    padding: 10px;
+    font-size: 22px;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: var(--btnBorderRadiusEve);
+}
+
+.generic-button:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    background-color: var(--smoothBlueEve);
+}
+
+#fill {
+    background-color:
+    var(--smoothBlueEve);
+}
+
+#fill:hover {
+    color: white;
+    background-color: var(--solidBlueEve);
+}
+
+#border {
+
+    border: solid 2px var(--solidBlueEve);
+    background-color: #ffffff;
+}
+
+#border:hover {
+    color: white;
+    border: none;
+    background-color: var(--solidBlueEve);
+}

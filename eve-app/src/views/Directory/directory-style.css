@@ -1,0 +1,32 @@
+.dir-content {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(9, 10vw);
+    overflow: scroll;
+}
+
+.void-dir {
+    display: flex;
+    width: 89vw;
+    height: 86vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+@media (max-width: 1000px) {
+    .dir-content {
+        grid-template-columns: repeat(4, 190px);
+    }
+}
+
+@media (max-width: 600px) {
+    .void-dir {
+        width: 96vw;
+    }
+
+    .dir-content {
+        grid-template-columns: repeat(2, 200px);
+    }
+}

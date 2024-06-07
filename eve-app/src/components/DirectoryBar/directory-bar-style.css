@@ -1,0 +1,46 @@
+@import url('../../styles/style.css');
+
+.directory-bar-content {
+    min-width: 30%;
+    max-width: 30%;
+    min-height: 45px;
+    display: flex;
+    /* overflow: hidden; */
+    overflow: auto;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: end;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: small;
+    font-weight: unset;
+    border-radius: var(--conersBorderRadiusEve);
+    background-color: var(--smoothBlueEve);
+    
+}
+
+.DirectoryBar-path-box-content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /*border: red solid ; */
+}
+
+.DirectoryBar-path-content {
+    overflow: auto;
+    display: flex;
+    flex-direction: row-reverse;
+
+    /*border: dashed blue; */
+}
+
+.DirectoryBar-path-content::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .directory-bar-content {
+        display: none;
+    }
+}
