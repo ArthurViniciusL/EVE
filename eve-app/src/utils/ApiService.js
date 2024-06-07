@@ -52,13 +52,14 @@ export function postFile(folder_id, file_name) {
     };
     console.log(file)
 
-    const restMethod = {
+    const restMethod = [{
         method: 'POST',
         body: JSON.stringify(file),
         headers: {
-            "Content-type": "application/json" // Define o cabeçalho 'Content-Type' como 'JSON'
+            "Content-type": "application/json",
+            "Access-Control-Allow-Headers": "*" // Define o cabeçalho 'Content-Type' como 'JSON'
         }
-    };
+    }];
 
     fetch(url_local, restMethod)
         .then(response => {
@@ -73,7 +74,9 @@ export function postFile(folder_id, file_name) {
         .catch(error => {
             console.error('Erro inesperado', error);
         })
+
+        //  var request = new XMLHttpRequest();
 }
 
-//postFile(1, 'ola mundo')
+postFile(1, 'ola mundo')
 
