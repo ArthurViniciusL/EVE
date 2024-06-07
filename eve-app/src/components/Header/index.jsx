@@ -5,6 +5,7 @@ import { BootstrapIcon } from '../../utils/Main';
 import { Link } from 'react-router-dom';
 import { DirectoryBar } from '../DirectoryBar';
 import { Input } from '../Input';
+import { postFile, postFolder } from '../../utils/ApiService';
 
 export const Header = (props) => {
 
@@ -20,27 +21,29 @@ export const Header = (props) => {
     };
 
     const homePath = () => {
-        props.setHome(1)
+        props.goHome.setFolderId(1);
+        props.goHome.setDirectoryBar('home');
     }
 
     const handleFolderChange = () => {
-        const foldersName = window.prompt('Só um aleta: Qual o nome da pasta?')
-        /*
-        OBG: Aqui só está mandando para a exibição, para inserir no back-end implemente a função de createFolder()
-        */
+        const parentId = props.folderId;
+        let folderName = window.prompt('Só um aleta: Qual o nome da pasta?');
+        
+        postFolder(parentId, folderName);
     }
 
     const handleOpenLocalFiles = (event) => {
         const receivedFile = event.target.files[0];
+        const folderId = props.folderId;
+        
         if (receivedFile) {
             const fileName = receivedFile.name;
             //const fileExtension = fileName.split('.').pop();
-
-            props.addFile(fileName);
-            //sendFile(fileName)
+        
+            postFile(folderId, fileName);
         };
     }
-
+    
     const iconSize = 25;
 
     return (
@@ -91,8 +94,6 @@ export const Header = (props) => {
                         </Link>
                     </div>
                 </div>
-
-
             </header >
         </>
     )

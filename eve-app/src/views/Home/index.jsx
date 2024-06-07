@@ -1,84 +1,51 @@
 import './home-style.css'
-import { Component } from "react";
-import { Header } from "../../components/Header";
-import Directory from "../../views/Directory";
+import { Header } from '../../components/Header/index.jsx'
+import { Directory } from '../Directory';
 
-import { postFile } from '../../utils/ApiService';
+import React, { useEffect, useState } from 'react';
+import { getFiles, getFolders } from '../../utils/ApiService.js';
+
+const Home = () => {
+
+    const [FOLDERS, loadFolders] = useState([]);
+    const [FILES, loadFiles] = useState([]);
+    const [FOLDER_ID, setFolderId] = useState(1);
+    const [DIRECTORY_BAR, setDirectoryBar] = useState(['home']);
 
 
-export class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            folderId: 1,
-            filesId: null,
-            directoryBar: ['home'],
-            folders: [],
-            files: []
+    useEffect(() => {
+        const API_REQUEST = async () => {
+            const apiFolder = await getFolders(FOLDER_ID);
+            const apiFiles = await getFiles(FOLDER_ID);
+            if (apiFolder) {
+                loadFolders(apiFolder)
+                loadFiles(apiFiles)
+            }
         }
+        API_REQUEST();
+    }, [FOLDER_ID]);
 
-        this.handleFolderChange = this.handleFolderChange.bind(this);
-        this.goToHome = this.goToHome.bind(this);
-        this.openFolder = this.openFolder.bind(this);
-        this.handleFileChange = this.handleFileChange.bind(this);
-        this.createFile = this.createFile.bind(this);
-    }
-    
-    handleFolderChange(folder_name) {
-        this.setState(prevState => ({
-            directoryBar: [...prevState.directoryBar, `/${folder_name}`]
-        }));
-    }
+    return (
+        <main className='home-main'>
+            <section className='home-section'>
+                <Header
+                    folderPathName={DIRECTORY_BAR}
+                    goHome={{ setFolderId, setDirectoryBar }}
+                    folderId={FOLDER_ID}
+                />
 
-    openFolder(folder_id) {
-        /* o id deve ir formatado como /id/subfolders */
-        this.setState({ folderId: folder_id});
-    }
-    
-    goToHome(home_path) {
-        this.setState({ folderId: home_path });
-        this.setState({ directoryBar: 'home' });
-    }
-
-    createFile(file_name) {
-        const folder_id = this.state.folderId;
-        postFile(folder_id, file_name);
-        //this.setState({files: file_name})
-    }
-
-
-    handleFileChange(folder_id) {
-        this.setState({filesId: folder_id});
-    }
-        
-    render() {
-        // ..., filesId, files
-        const { folderId, directoryBar } = this.state;
-        
-        return (
-            <main className='home-main'>
-                <section className='home-section'>
-
-                    <Header
-                        folderPathName={directoryBar}
-                        setHome={this.goToHome}
-                        addFile={this.createFile}
+                <div className='home-Directory-box'>
+                    <Directory
+                        folders={FOLDERS}
+                        files={FILES}
+                        setFolderId={setFolderId}
+                        getDirectoryBar={DIRECTORY_BAR}
+                        setDirectoryBar={setDirectoryBar}
                     />
-
-                    <div className='home-Directory-box'>
-                        <Directory
-                            key={''}
-                            folderId={folderId}
-                            setPathNameInDirBar={this.handleFolderChange}
-                            openFolder={this.openFolder}                            
-                            setFileId={this.handleFileChange}
-                        ></Directory>
-                    </div>
-
-                </section>
-            </main>
-        );
-    }
-}
+                </div>
+            </section>
+        </main>
+    );
+};
 
 export default Home;

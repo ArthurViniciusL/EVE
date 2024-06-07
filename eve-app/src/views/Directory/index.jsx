@@ -1,31 +1,15 @@
 import './directory-style.css';
 import { FolderComponent } from "../../components/Folder/index.jsx";
-import { useEffect, useState } from 'react';
-import { getFiles, getFolders } from '../../utils/ApiService.js';
 import { FileComponent } from '../../components/Files/index.jsx';
 
-const Directory = (props) => {
-    const FOLDER_ID = props.folderId;
-
-    const [FOLDERS, loadFolders] = useState([]);
-    const [FILES, loadFiles] = useState([]);
-
-    useEffect(() => {
-        const API_REQUEST = async () => {
-            const apiFolder = await getFolders(FOLDER_ID);
-            const apiFiles = await getFiles(FOLDER_ID);
-
-            if (apiFolder) {
-                loadFolders(apiFolder)
-                loadFiles(apiFiles)
-            }
-        }
-        API_REQUEST();
-    }, [FOLDER_ID]);
-
+export const Directory = (props) => {
+    
+    const FOLDERS = props.folders;
+    const FILES = props.files;
+    
     // -------------------------------------------------------------------------------------------
     // Componente para atualizar a pagina sozinha em x segundos. OBS: otimizar com apenas um useEffect
-    useEffect(() => {
+    /* useEffect(() => {
         const intervalId = setInterval(async () => {
             const dadosDaAPI = await getFolders(FOLDER_ID);
             if (dadosDaAPI) {
@@ -34,21 +18,24 @@ const Directory = (props) => {
         }, 10000);
 
         return () => clearInterval(intervalId);
-    }, [FOLDER_ID]);
+    }, [FOLDER_ID]); */
     // -------------------------------------------------------------------------------------------
 
     const getDataFolderComponent = async (folder_id, folder_name) => {
-        props.openFolder(folder_id);
-        props.setPathNameInDirBar(folder_name);
-        props.setFileId(folder_id)
+        props.setFolderId(folder_id);
+
+        const namePath = [props.getDirectoryBar];
+        namePath.push("/"+folder_name);
+        props.setDirectoryBar(namePath);
+        
     };
 
     return (
         <>
             <div className='dir-content'>
                 {
-                    (FOLDERS).map((folder) => (
-                        <div key={folder.id} onClick={() => getDataFolderComponent(folder.id, folder.name)}>
+                    FOLDERS.map((folder, index) => (
+                        <div key={index} onClick={() => getDataFolderComponent(folder.id, folder.name)}>
                             <FolderComponent NAME={folder.name} />
                         </div>
                     ))
