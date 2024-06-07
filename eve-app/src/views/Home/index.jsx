@@ -2,6 +2,7 @@ import './home-style.css'
 import { Component } from "react";
 import { Header } from "../../components/Header";
 import Directory from "../../views/Directory";
+
 import { postFile } from '../../utils/ApiService';
 
 
@@ -10,7 +11,7 @@ export class Home extends Component {
         super(props);
         this.state = {
             folderId: 1,
-            filesId: '',
+            filesId: null,
             directoryBar: ['home'],
             folders: [],
             files: []

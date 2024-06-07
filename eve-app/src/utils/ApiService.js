@@ -5,10 +5,10 @@ const URL = process.env.REACT_APP_API_URL;
 const URL_FILES = process.env.REACT_APP_API_FILE_URL;
 
 export async function getFolders(folder_id) {
-    
-    const path = `/${folder_id}/subfolders` 
 
-    const formattedPath = `${URL}${path}` || URL
+    const path = `/${folder_id}/subfolders`
+
+    const formattedPath = `${URL}${path}` 
 
     try {
         const response = await fetch(formattedPath);
@@ -27,15 +27,15 @@ export function postFolder(father_id, folder_name) {
 }
 
 export async function getFiles(folder_id) {
-    
-    const formattedPath = `${URL_FILES}/folder/${folder_id}` // || `${URL_FILES}/folder/1`
+
+    const formattedPath = `${URL_FILES}/folder/${folder_id}` || `${URL_FILES}/folder/1`
 
     try {
         const response = await fetch(formattedPath);
         const jsonApi = await response.json();
         //console.log("File: " + jsonApi);
         return jsonApi;
-    
+
     } catch (error) {
         throw new Error('File: Erro ao obter dados da API:', error);
     }
@@ -43,35 +43,37 @@ export async function getFiles(folder_id) {
 
 export function postFile(folder_id, file_name) {
 
+    const url_local = 'http://localhost:8090/files'
+    
     const file = {
-        folderId: folder_id,
         name: file_name,
-        content: null // para a conversão em base64
+        content: "", // para a conversão em base64
+        folderId: folder_id
     };
+    console.log(file)
 
     const restMethod = {
         method: 'POST',
+        body: JSON.stringify(file),
         headers: {
-            'Content-Type': 'application/json' // Define o cabeçalho 'Content-Type' como 'JSON'
-          },
-          body: JSON.stringify(file)
+            "Content-type": "application/json" // Define o cabeçalho 'Content-Type' como 'JSON'
+        }
     };
 
-    fetch(URL_FILES, restMethod)
-        .then(status => {
-            if (!status.ok) {
-                throw new Error('Erro de requisição: ' + status.statusText)
+    fetch(url_local, restMethod)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro de requisição: ', response.statusText);
             }
-            return status.json
+            return response.json();
         })
-        .then(serverResponse => {
-            console.log('Resposta do servidor: ' + serverResponse);
+        .then(responseData => {
+            console.log('Resposta do servidor: ', responseData);
         })
         .catch(error => {
             console.error('Erro inesperado', error);
         })
-
 }
 
+//postFile(1, 'ola mundo')
 
-//postFile(1,'meu arquivo de teste.png')

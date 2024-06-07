@@ -5,16 +5,15 @@ import { getFiles, getFolders } from '../../utils/ApiService.js';
 import { FileComponent } from '../../components/Files/index.jsx';
 
 const Directory = (props) => {
-    const folder = props.folderId;
-    const file = props.folderId;
-    
+    const FOLDER_ID = props.folderId;
+
     const [FOLDERS, loadFolders] = useState([]);
     const [FILES, loadFiles] = useState([]);
 
     useEffect(() => {
         const API_REQUEST = async () => {
-            const apiFolder = await getFolders(folder);
-            const apiFiles = await getFiles(file);
+            const apiFolder = await getFolders(FOLDER_ID);
+            const apiFiles = await getFiles(FOLDER_ID);
 
             if (apiFolder) {
                 loadFolders(apiFolder)
@@ -22,20 +21,20 @@ const Directory = (props) => {
             }
         }
         API_REQUEST();
-    }, [folder, file]);
+    }, [FOLDER_ID]);
 
     // -------------------------------------------------------------------------------------------
     // Componente para atualizar a pagina sozinha em x segundos. OBS: otimizar com apenas um useEffect
     useEffect(() => {
         const intervalId = setInterval(async () => {
-            const dadosDaAPI = await getFolders(folder);
+            const dadosDaAPI = await getFolders(FOLDER_ID);
             if (dadosDaAPI) {
                 loadFolders(dadosDaAPI);
             }
         }, 10000);
 
         return () => clearInterval(intervalId);
-    }, [folder, file]);
+    }, [FOLDER_ID]);
     // -------------------------------------------------------------------------------------------
 
     const getDataFolderComponent = async (folder_id, folder_name) => {
@@ -66,8 +65,8 @@ const Directory = (props) => {
                 {
                     (FOLDERS.length || FILES.length) === 0 && (
                         <div className="void-dir">
-                            <h3 style={{'color':'#aaadb6'}}>Diretório vazio!</h3>
-                            
+                            <h3 style={{ 'color': '#aaadb6' }}>Diretório vazio!</h3>
+
                         </div>
                     )
                 }

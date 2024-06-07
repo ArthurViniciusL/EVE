@@ -20,7 +20,7 @@ export const Header = (props) => {
     };
 
     const homePath = () => {
-        props.setHome('')
+        props.setHome(1)
     }
 
     const handleFolderChange = () => {
