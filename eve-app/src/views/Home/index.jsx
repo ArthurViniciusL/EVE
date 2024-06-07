@@ -21,6 +21,7 @@ export class Home extends Component {
         this.goToHome = this.goToHome.bind(this);
         this.openFolder = this.openFolder.bind(this);
         this.handleFileChange = this.handleFileChange.bind(this);
+        this.createFile = this.createFile.bind(this);
     }
     
     handleFolderChange(folder_name) {
@@ -35,23 +36,24 @@ export class Home extends Component {
     }
     
     goToHome(home_path) {
-        this.setState({ folderId: home_path })
-        this.setState({ directoryBar: 'home' })
+        this.setState({ folderId: home_path });
+        this.setState({ directoryBar: 'home' });
     }
 
-    createFile() {
-        // this.state.fileId
-        //postFile()
+    createFile(file_name) {
+        const folder_id = this.state.folderId;
+        postFile(folder_id, file_name);
+        //this.setState({files: file_name})
     }
 
 
     handleFileChange(folder_id) {
-        this.setState({filesId: folder_id})
+        this.setState({filesId: folder_id});
     }
         
     render() {
-        
-        const { folderId, directoryBar, filesId } = this.state;
+        // ..., filesId, files
+        const { folderId, directoryBar } = this.state;
         
         return (
             <main className='home-main'>
@@ -60,6 +62,7 @@ export class Home extends Component {
                     <Header
                         folderPathName={directoryBar}
                         setHome={this.goToHome}
+                        addFile={this.createFile}
                     />
 
                     <div className='home-Directory-box'>

@@ -66,7 +66,6 @@ const Directory = (props) => {
                     (FOLDERS.length || FILES.length) === 0 && (
                         <div className="void-dir">
                             <h3 style={{ 'color': '#aaadb6' }}>Diretório vazio!</h3>
-
                         </div>
                     )
                 }

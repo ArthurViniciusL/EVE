@@ -25,25 +25,22 @@ export const Header = (props) => {
 
     const handleFolderChange = () => {
         const foldersName = window.prompt('Só um aleta: Qual o nome da pasta?')
-
         /*
         OBG: Aqui só está mandando para a exibição, para inserir no back-end implemente a função de createFolder()
         */
-
-        // props.setFolderState(foldersName)
     }
 
-    const handleOpenLocalFiles = () => {
-        const newFile = { 'name': 'arquivo.txt'};
-        const file = [...props.fileId, newFile];
+    const handleOpenLocalFiles = (event) => {
+        const receivedFile = event.target.files[0];
+        if (receivedFile) {
+            const fileName = receivedFile.name;
+            //const fileExtension = fileName.split('.').pop();
 
-        /*
-        OBG: Aqui só está mandando para a exibição, para inserir no back-end implemente a função de createFile()
-        */
-        // Atualizar o estado com a nova lista de arquivos
-        
-        props.sendFile(file)
-    };
+            props.addFile(fileName);
+            //sendFile(fileName)
+        };
+    }
+
     const iconSize = 25;
 
     return (
@@ -69,7 +66,7 @@ export const Header = (props) => {
                             } CSS={styleJs.ButtonStyle} />
                         </div>
 
-                        <div onClick={handleOpenLocalFiles}>
+                        <div onChange={handleOpenLocalFiles} >
                             <Button LABEL={
                                 <Input TYPE={'file'} LABEL={
                                     <BootstrapIcon
