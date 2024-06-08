@@ -3,24 +3,9 @@ import { FolderComponent } from "../../components/Folder/index.jsx";
 import { FileComponent } from '../../components/Files/index.jsx';
 
 export const Directory = (props) => {
-    
-    const FOLDERS = props.folders;
+    const FOLDERS = props.folders
     const FILES = props.files;
     
-    // -------------------------------------------------------------------------------------------
-    // Componente para atualizar a pagina sozinha em x segundos. OBS: otimizar com apenas um useEffect
-    /* useEffect(() => {
-        const intervalId = setInterval(async () => {
-            const dadosDaAPI = await getFolders(FOLDER_ID);
-            if (dadosDaAPI) {
-                loadFolders(dadosDaAPI);
-            }
-        }, 10000);
-
-        return () => clearInterval(intervalId);
-    }, [FOLDER_ID]); */
-    // -------------------------------------------------------------------------------------------
-
     const getDataFolderComponent = async (folder_id, folder_name) => {
         props.setFolderId(folder_id);
 
