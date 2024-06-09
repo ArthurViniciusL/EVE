@@ -21,28 +21,24 @@ export async function getFolders(folder_id) {
 
 };
 
-export function postFolder(id, folder_name) {
+export async function postFolder(id, folder_name) {
 
-    const folder = {
-        name: folder_name,
-        parentId: id
-    };
-    console.log('postFolder debug:')
-    console.log(folder)
+    // Construindo a URL com os parâmetros CURL
+    const folderCurl = `${URL}?name=${encodeURIComponent(folder_name)}&parentId=${encodeURIComponent(id)}`;
 
-    const restMethod = [{
-        //mode: 'no-cors',
+    const restMethod = {
         method: "POST",
-        body: JSON.stringify(folder),
         headers: {
-            "Content-type": "application/json" // Define o cabeçalho 'Content-Type' como 'JSON'
+            "Content-Type": "application/json"
         }
-    }];
+    };
 
-    fetch(URL, restMethod)
+    fetch(folderCurl, restMethod)
         .then(response => {
             if (!response.ok) {
-                throw new Error('Folder - Erro de requisição: ', response.statusText);
+                return response.json().then(err => {
+                    throw new Error(`Folder - Erro de requisição: ${response.statusText} - ${JSON.stringify(err)}`);
+                });
             }
             return response.json();
         })
@@ -70,29 +66,24 @@ export async function getFiles(folder_id) {
     }
 };
 
-export function postFile(folder_id, file_name) {
+export async function postFile(folder_id, file_name) {
 
-    const file = {
-        name: file_name,
-        content: "", // para a conversão em base64
-        folderId: folder_id
-    };
-    console.log('postFile debug:')
-    console.log(file)
+    // Construindo a URL com os parâmetros CURL
+    const fileCurl = `${URL_FILES}?name=${encodeURIComponent(file_name)}&content=null&folderId=${encodeURIComponent(folder_id)}`;
 
-    const restMethod = [{
-        //mode: 'no-cors',
-        method: 'POST',
-        body: JSON.stringify(file),
+    const restMethod = {
+        method: "POST",
         headers: {
-            "Content-type": "application/json" // Define o cabeçalho 'Content-Type' como 'JSON'
+            "Content-Type": "application/json"
         }
-    }];
+    };
 
-    fetch(URL_FILES, restMethod)
+    fetch(fileCurl, restMethod)
         .then(response => {
             if (!response.ok) {
-                throw new Error('File - Erro de requisição: ', response.statusText);
+                return response.json().then(err => {
+                    throw new Error(`Folder - Erro de requisição: ${response.statusText} - ${JSON.stringify(err)}`);
+                });
             }
             return response.json();
         })
@@ -102,4 +93,5 @@ export function postFile(folder_id, file_name) {
         .catch(error => {
             console.error('Erro inesperado', error);
         });
+
 };

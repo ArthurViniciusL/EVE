@@ -2,16 +2,16 @@
 FROM node:18
 
 # Defina o diretório de trabalho no container
-WORKDIR /app
+WORKDIR ./app
 
 # Copie os arquivos package.json e package-lock.json
-COPY package*.json ./
+COPY ../package*.json ./
 
 # Instale as dependências
-RUN npm install react-bootstrap react-router-dom
+RUN npm install
 
 # Copie o restante do código da aplicação
-COPY . .
+COPY .. .
 
 # Exponha a porta em que a aplicação irá rodar
 EXPOSE 3000

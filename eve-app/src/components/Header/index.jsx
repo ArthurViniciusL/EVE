@@ -9,8 +9,6 @@ import { postFile, postFolder } from '../../utils/ApiService';
 
 export const Header = (props) => {
 
-    //FOLDER_PATH, SEND_FILES, UPDATE_FILES 
-
     const styleJs = {
         "ButtonStyle": {
             "width": "60px",
@@ -26,24 +24,27 @@ export const Header = (props) => {
     }
 
     const handleFolderChange = () => {
-        const parentId = props.folderId;
+
         let folderName = window.prompt('Só um aleta: Qual o nome da pasta?');
-        
-        postFolder(parentId, folderName);
+
+        if (folderName !== null && folderName.trim() !== '') {
+            const parentId = props.folderId;
+            postFolder(parentId, folderName);
+        }
     }
 
     const handleOpenLocalFiles = (event) => {
         const receivedFile = event.target.files[0];
         const folderId = props.folderId;
-        
+
         if (receivedFile) {
             const fileName = receivedFile.name;
             //const fileExtension = fileName.split('.').pop();
-        
+
             postFile(folderId, fileName);
         };
     }
-    
+
     const iconSize = 25;
 
     return (

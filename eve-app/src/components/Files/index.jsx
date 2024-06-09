@@ -5,8 +5,7 @@ import { sliceName } from '../../utils/Main.js';
 
 export const FileComponent = ({ NAME }) => {
     const defaultName = NAME || 'FileComponent'
-    const wordLength = 15;
-    // console.log(NAME)
+    const wordLength = 10;
     return (
         <>
             <div className="file-component" >

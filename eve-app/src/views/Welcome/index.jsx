@@ -36,7 +36,7 @@ export class Welcome extends Component {
                     </div>
 
                     <div className='buttons-box'>
-                        <Button LABEL={"Criar conta"} ON_Click={msgOnClick} STYLE_EVE={"border"} CSS={styleJs.ButtonStyle}></Button>
+                        <Button LABEL={"Criar conta"} OnClick={msgOnClick} STYLE_EVE={"border"} CSS={styleJs.ButtonStyle}></Button>
 
                         <Link to="home">
                             <Button LABEL={"Entrar"} STYLE_EVE={"fill"} CSS={styleJs.ButtonStyle}></Button>
