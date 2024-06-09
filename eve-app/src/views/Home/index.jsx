@@ -10,14 +10,24 @@ const Home = () => {
     const [FILES, loadFiles] = useState([]);
     const [FOLDER_ID, setFolderId] = useState(1);
     const [DIRECTORY_BAR, setDirectoryBar] = useState(['home']);
-    
-    
+
+    useEffect(() => {
+        console.log('FILES.map is not a function irá aparecer caso não exista o diretório raiz de id = 1 para setar em FOLDER_ID.')
+        const fetchData = async () => {
+            const apiFolder = await getFolders(FOLDER_ID);
+            const apiFiles = await getFiles(FOLDER_ID);
+            if (apiFolder) {
+                loadFolders(apiFolder);
+                loadFiles(apiFiles);
+            }
+        }
+        fetchData()
+    }, [FOLDER_ID]);
+
+
     useEffect(() => {
         // Componente para atualizar a pagina sozinha em x segundos. OBS: otimizar com apenas um useEffect
         const intervalId = setInterval(async () => {
-            
-            console.log('FILES.map is not a function irá aparecer caso não exista o diretório raiz de id = 1 para setar em FOLDER_ID ')
-            
             const apiFolder = await getFolders(FOLDER_ID);
             const apiFiles = await getFiles(FOLDER_ID);
             if (apiFolder) {
