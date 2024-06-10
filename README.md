@@ -14,4 +14,4 @@ Caso você seja usuário de Debian Gnu/Linux basta executar esse shell script: [
 3. Após entrar na pasta do docker digite:
 > ```sudo docker compose up```
 5. Acesse:
-> ```http://localhost:3000/```
+```http://localhost:3000/```
