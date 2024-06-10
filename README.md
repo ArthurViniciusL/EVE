@@ -10,9 +10,13 @@ Caso você seja usuário de Debian Gnu/Linux basta executar esse shell script: [
 # Executando o Front-end em Docker.
 1. Entre na pasta do projeto (eve-app);
 2. No terminal digite:
- > ```cd docker ```
-3. Após entrar na pasta do docker digite:
-> ```sudo docker compose up```
+```
+cd docker
+```
+4. Após entrar na pasta do docker digite:
+```
+sudo docker compose up
+```
 5. Acesse:
 ```
 http://localhost:3000/
