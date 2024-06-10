@@ -4,6 +4,40 @@
 const URL = process.env.REACT_APP_API_URL;
 const URL_FILES = process.env.REACT_APP_API_FILE_URL;
 
+export async function createDefaultFolder() {    
+    if (createDefaultFolder.called) {
+        return;
+    }
+    // Define a propriedade estática para indicar que a função foi chamada uma vez;
+    createDefaultFolder.called = true;
+
+    // Construindo a URL com os parâmetros CURL;
+    const fileCurl = `${URL}?name=/&content=null&folderId=null`;
+
+    const restMethod = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    };
+
+    fetch(fileCurl, restMethod)
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(`Folder - Erro de requisição: ${response.statusText} - ${JSON.stringify(err)}`);
+                });
+            }
+            return response.json();
+        })
+        .then(responseData => {
+            console.log('Resposta do servidor: ', responseData);
+        })
+        .catch(error => {
+            console.error('Erro inesperado', error);
+        });
+}
+
 export async function getFolders(folder_id) {
 
     const path = `/${folder_id}/subfolders`
@@ -23,7 +57,6 @@ export async function getFolders(folder_id) {
 
 export async function postFolder(id, folder_name) {
 
-    // Construindo a URL com os parâmetros CURL
     const folderCurl = `${URL}?name=${encodeURIComponent(folder_name)}&parentId=${encodeURIComponent(id)}`;
 
     const restMethod = {
@@ -68,7 +101,6 @@ export async function getFiles(folder_id) {
 
 export async function postFile(folder_id, file_name) {
 
-    // Construindo a URL com os parâmetros CURL
     const fileCurl = `${URL_FILES}?name=${encodeURIComponent(file_name)}&content=null&folderId=${encodeURIComponent(folder_id)}`;
 
     const restMethod = {
