@@ -25,7 +25,7 @@ export const Header = (props) => {
 
     const handleFolderChange = () => {
 
-        let folderName = window.prompt('Só um aleta: Qual o nome da pasta?');
+        let folderName = window.prompt('Nome da sua pasta:');
 
         if (folderName !== null && folderName.trim() !== '') {
             const parentId = props.folderId;
