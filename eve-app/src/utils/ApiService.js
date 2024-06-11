@@ -4,38 +4,44 @@
 const URL = process.env.REACT_APP_API_URL;
 const URL_FILES = process.env.REACT_APP_API_FILE_URL;
 
-export async function createDefaultFolder() {    
+export async function createDefaultFolder() {
+
+    // Define a propriedade estática para indicar que a função foi chamada uma vez;
     if (createDefaultFolder.called) {
         return;
     }
-    // Define a propriedade estática para indicar que a função foi chamada uma vez;
     createDefaultFolder.called = true;
 
-    // Construindo a URL com os parâmetros CURL;
-    const fileCurl = `${URL}?name=/&content=null&folderId=null`;
+    try {
+        const response = await fetch(URL);
+        const jsonApi = await response.json();
 
-    const restMethod = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+        if (Object.keys(jsonApi).length < 1) {
+            // Construindo a URL com os parâmetros CURL;
+            const fileCurl = `${URL}?name=/&content=null&folderId=null`;
+
+            const restMethod = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            };
+            fetch(fileCurl, restMethod)
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => {
+                            throw new Error(`Folder - Erro de requisição: ${response.statusText} - ${JSON.stringify(err)}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(responseData => {
+                    console.log('Resposta do servidor: ', responseData);
+                })
         }
-    };
-
-    fetch(fileCurl, restMethod)
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(err => {
-                    throw new Error(`Folder - Erro de requisição: ${response.statusText} - ${JSON.stringify(err)}`);
-                });
-            }
-            return response.json();
-        })
-        .then(responseData => {
-            console.log('Resposta do servidor: ', responseData);
-        })
-        .catch(error => {
-            console.error('Erro inesperado', error);
-        });
+    } catch (error) {
+        throw new Error('Folder: Erro ao obter dados da API:', error);
+    }
 }
 
 export async function getFolders(folder_id) {
@@ -91,7 +97,6 @@ export async function getFiles(folder_id) {
     try {
         const response = await fetch(formattedPath);
         const jsonApi = await response.json();
-        //console.log("File: " + jsonApi);
         return jsonApi;
 
     } catch (error) {
