@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 
 import clouds from '../../assets/imgs/clouds.png';
 import { EveLogo } from '../../components/EveLogo';
+import { createDefaultFolder } from '../../utils/ApiService';
 
 export class Welcome extends Component {
 
     render() {
-
+        
+        createDefaultFolder();
+        
         const msgOnClick = () => {
            window.alert('Ops! Ainda não temos dinheiro para essa parte...');
         };
@@ -19,6 +22,7 @@ export class Welcome extends Component {
                 "width": "300px", "height": "70px", "fontSize": "22px", "margin": "30px"
             }
         }
+
 
         return <>
             <main className='box-welcome-content'>
