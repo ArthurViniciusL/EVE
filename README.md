@@ -5,7 +5,8 @@
 Caso você seja usuário de Debian Gnu/Linux basta executar esse shell script: [install-docker-debian.sh](https://github.com/ArthurViniciusL/EVE/blob/main/eve-app/linux/install-docker-debian.sh).
 
 # Executando o Back-end em Docker.
-1. Acesse: [https://hub.docker.com/r/ivyson/eve-api](https://hub.docker.com/r/ivyson/eve-api).
+1.Repositório do back-end: ![https://github.com/Ivyson13/EVE-api](https://github.com/Ivyson13/EVE-api).
+2. Acesse: [https://hub.docker.com/r/ivyson/eve-api](https://hub.docker.com/r/ivyson/eve-api). 
 
 # Executando o Front-end em Docker.
 1. Entre na pasta do projeto (eve-app);
