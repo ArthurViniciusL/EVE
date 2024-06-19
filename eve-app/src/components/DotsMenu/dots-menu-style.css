@@ -1,0 +1,10 @@
+.box-DotsMenu {
+    cursor: pointer;
+    width: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.box-DotsMenu:hover {
+    background-color: rgba(0, 0, 0, 0.068);
+}
